@@ -289,8 +289,33 @@ tracer_provider:
           ratio: 0.01
       local_parent_sampled:
         composite/development:
-          probability:
-            ratio: 0.001
+          rule_based:
+            rules:
+              - attribute_values:
+                  key: http.route
+                  values:
+                    - /healthz
+                    - /livez
+                sampler:
+                  always_off:
+              - attribute_patterns:
+                  key: http.path
+                  patterns:
+                    included:
+                      - /internal/*
+                    excluded:
+                      - /internal/special/*
+                sampler:
+                  always_on:
+              - is_root: true
+                span_kinds:
+                  - CLIENT
+                sampler:
+                  trace_id_ratio_based:
+                    ratio: 0.05
+              - sampler:
+                  probability:
+                    ratio: 0.001
       local_parent_not_sampled:
         always_off:
   tracer_configurator/development:
