@@ -1,0 +1,31 @@
+# parent based sampler where root spans are sampled according to the following rules:
+# - health check endpoints are never sampled
+# - checkout endpoints are always sampled
+# - other spans are sampled at 10%
+sampler:
+  parent_based:
+    root:
+      composite/development:
+        rule_based:
+          rules:
+            - span_kinds:
+                - SERVER
+              attribute_patterns:
+                key: http.route
+                patterns:
+                  included:
+                    - /health*
+              sampler:
+                always_off:
+            - span_kinds:
+                - SERVER
+              attribute_patterns:
+                key: http.route
+                patterns:
+                  included:
+                    - /checkout*
+              sampler:
+                always_on:
+            - sampler:
+                probability:
+                  ratio: 0.1

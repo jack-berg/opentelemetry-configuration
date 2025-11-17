@@ -1,0 +1,11 @@
+# sample spans with kind=SERVER and http.route != /health*
+rules:
+  - span_kinds:
+      - SERVER
+    attribute_patterns:
+      key: http.route
+      patterns:
+        excluded:
+          - /health*
+    sampler:
+      always_on:

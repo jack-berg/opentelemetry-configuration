@@ -1113,6 +1113,46 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+Snippets:
+
+<details>
+<summary>Attribute Patterns</summary>
+
+[Snippet Source File](./snippets/ExperimentalComposableRuleBasedSampler_attribute_patterns.yaml)
+```yaml
+# sample spans with kind=SERVER and http.route != /health*
+rules:
+  - span_kinds:
+      - SERVER
+    attribute_patterns:
+      key: http.route
+      patterns:
+        excluded:
+          - /health*
+    sampler:
+      always_on:
+```
+</details>
+
+<details>
+<summary>Attribute Values</summary>
+
+[Snippet Source File](./snippets/ExperimentalComposableRuleBasedSampler_attribute_values.yaml)
+```yaml
+# sample spans with kind=SERVER and http.request.method GET and POST requests
+rules:
+  - attribute_values:
+      key: http.request.method
+      values:
+        - GET
+        - POST
+    span_kinds:
+      - SERVER
+    sampler:
+      always_on:
+```
+</details>
+
 Usages:
 
 * [`ExperimentalComposableSampler.rule_based`](#experimentalcomposablesampler)
@@ -1170,6 +1210,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 * `required`: `["sampler"]`
+
+No snippets.
 
 No usages.
 
@@ -1231,6 +1273,8 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["key","patterns"]`
 
+No snippets.
+
 Usages:
 
 * [`ExperimentalComposableRuleBasedSamplerRule.attribute_patterns`](#experimentalcomposablerulebasedsamplerrule)
@@ -1280,6 +1324,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 * `required`: `["key","values"]`
+
+No snippets.
 
 Usages:
 
@@ -6168,6 +6214,45 @@ parent_based:
 ```
 </details>
 
+<details>
+<summary>Rulebased Spec Example</summary>
+
+[Snippet Source File](./snippets/Sampler_rulebased_spec_example.yaml)
+```yaml
+# parent based sampler where root spans are sampled according to the following rules:
+# - health check endpoints are never sampled
+# - checkout endpoints are always sampled
+# - other spans are sampled at 10%
+sampler:
+  parent_based:
+    root:
+      composite/development:
+        rule_based:
+          rules:
+            - span_kinds:
+                - SERVER
+              attribute_patterns:
+                key: http.route
+                patterns:
+                  included:
+                    - /health*
+              sampler:
+                always_off:
+            - span_kinds:
+                - SERVER
+              attribute_patterns:
+                key: http.route
+                patterns:
+                  included:
+                    - /checkout*
+              sampler:
+                always_on:
+            - sampler:
+                probability:
+                  ratio: 0.1
+```
+</details>
+
 Usages:
 
 * [`TracerProvider.sampler`](#tracerprovider)
@@ -6400,6 +6485,8 @@ This is a enum type.
 </details>
 
 No constraints.
+
+No snippets.
 
 Usages:
 

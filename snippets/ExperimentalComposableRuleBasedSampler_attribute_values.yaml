@@ -1,0 +1,11 @@
+# sample spans with kind=SERVER and http.request.method GET and POST requests
+rules:
+  - attribute_values:
+      key: http.request.method
+      values:
+        - GET
+        - POST
+    span_kinds:
+      - SERVER
+    sampler:
+      always_on:
