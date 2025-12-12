@@ -96,8 +96,16 @@ function writeType(sourceSchemaType) {
             output.push("No properties.\n\n");
         } else {
             // Property type and description table
-            output.push(`| Property | Type | Required? | Default and Null Behavior | Constraints | Description |\n`);
-            output.push("|---|---|---|---|---|---|\n");
+            output.push("<table>\n")
+            output.push("<tr>\n")
+            output.push("<th width='5%'>Property</th>\n")
+            output.push("<th>Type</th>\n")
+            output.push("<th>Required?</th>\n")
+            output.push("<th>Default and Null Behavior</th>\n")
+            output.push("<th>Constraints</th>\n")
+            output.push("<th width='20%'>Description</th>\n")
+            output.push("</tr>\n")
+
             properties.forEach(sourceSchemaProperty => {
                 let formattedProperty = `\`${sourceSchemaProperty.property}\``
                 if (isExperimentalProperty(sourceSchemaProperty.property)) {
@@ -112,9 +120,11 @@ function writeType(sourceSchemaType) {
                 }
                 const formattedDescription = sourceSchemaProperty.schema.description.split("\n").join("<br>");
 
-                output.push(`| ${formattedProperty} | ${formattedPropertyType} | \`${isRequired}\` | ${formattedDefaultAndNullBehavior} | ${formattedConstraints} | ${formattedDescription} |\n`);
+                output.push("<tr>\n");
+                output.push(`<td width="5%">${formattedProperty}</td><td>${formattedPropertyType}</td><td>\`${isRequired}\`</td><td>${formattedDefaultAndNullBehavior}</td><td>${formattedConstraints}</td><td width="20%">${formattedDescription}</td>\n`);
+                output.push("</tr>\n");
             });
-            output.push('\n');
+            output.push("</table>\n");
         }
     }
 

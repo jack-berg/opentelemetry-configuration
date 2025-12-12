@@ -14,15 +14,34 @@ This document is an auto-generated view of the declarative configuration JSON sc
 
 ## Aggregation <a id="aggregation"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `base2_exponential_bucket_histogram` | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | `false` | If omitted, ignore. | No constraints. | Configures the stream to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#base2-exponential-bucket-histogram-aggregation for details. |
-| `default` | [`DefaultAggregation`](#defaultaggregation) | `false` | If omitted, ignore. | No constraints. | Configures the stream to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#default-aggregation for details. |
-| `drop` | [`DropAggregation`](#dropaggregation) | `false` | If omitted, ignore. | No constraints. | Configures the stream to ignore/drop all instrument measurements. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#drop-aggregation for details. |
-| `explicit_bucket_histogram` | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | `false` | If omitted, ignore. | No constraints. | Configures the stream to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation for details |
-| `last_value` | [`LastValueAggregation`](#lastvalueaggregation) | `false` | If omitted, ignore. | No constraints. | Configures the stream to collect data using the last measurement. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#last-value-aggregation for details. |
-| `sum` | [`SumAggregation`](#sumaggregation) | `false` | If omitted, ignore. | No constraints. | Configures the stream to collect the arithmetic sum of measurement values. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sum-aggregation for details. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`base2_exponential_bucket_histogram`</td><td>[`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configures the stream to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#base2-exponential-bucket-histogram-aggregation for details.</td>
+</tr>
+<tr>
+<td width="5%">`default`</td><td>[`DefaultAggregation`](#defaultaggregation)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configures the stream to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#default-aggregation for details.</td>
+</tr>
+<tr>
+<td width="5%">`drop`</td><td>[`DropAggregation`](#dropaggregation)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configures the stream to ignore/drop all instrument measurements. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#drop-aggregation for details.</td>
+</tr>
+<tr>
+<td width="5%">`explicit_bucket_histogram`</td><td>[`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configures the stream to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation for details</td>
+</tr>
+<tr>
+<td width="5%">`last_value`</td><td>[`LastValueAggregation`](#lastvalueaggregation)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configures the stream to collect data using the last measurement. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#last-value-aggregation for details.</td>
+</tr>
+<tr>
+<td width="5%">`sum`</td><td>[`SumAggregation`](#sumaggregation)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configures the stream to collect the arithmetic sum of measurement values. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sum-aggregation for details.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -136,11 +155,22 @@ No snippets.
 
 ## AttributeLimits <a id="attributelimits"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 128 is used. | * `minimum`: `0`<br> | Configure max attribute count. <br>Value must be non-negative.<br> |
-| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, there is no limit. | * `minimum`: `0`<br> | Configure max attribute value size. <br>Value must be non-negative.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`attribute_count_limit`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 128 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max attribute count. <br>Value must be non-negative.<br></td>
+</tr>
+<tr>
+<td width="5%">`attribute_value_length_limit`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, there is no limit.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max attribute value size. <br>Value must be non-negative.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -188,12 +218,25 @@ No snippets.
 
 ## AttributeNameValue <a id="attributenamevalue"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `name` | `string` | `true` | Property is required and must be non-null. | No constraints. | The attribute name.<br> |
-| `type` | [`AttributeType`](#attributetype) | `false` | If omitted, string is used. | No constraints. | The attribute type.<br> |
-| `value` | `oneOf` | `true` | Property is required and must be non-null. | No constraints. | The attribute value.<br>The type of value must match .type.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`name`</td><td>`string`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">The attribute name.<br></td>
+</tr>
+<tr>
+<td width="5%">`type`</td><td>[`AttributeType`](#attributetype)</td><td>`false`</td><td>If omitted, string is used.</td><td>No constraints.</td><td width="20%">The attribute type.<br></td>
+</tr>
+<tr>
+<td width="5%">`value`</td><td>`oneOf`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">The attribute value.<br>The type of value must match .type.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -417,12 +460,25 @@ No snippets.
 
 ## Base2ExponentialBucketHistogramAggregation <a id="base2exponentialbuckethistogramaggregation"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `max_scale` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 20 is used. | * `minimum`: `-10`<br>* `maximum`: `20`<br> | Configure the max scale factor. |
-| `max_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 160 is used. | * `minimum`: `2`<br> | Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket. |
-| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, true is used. | No constraints. | Configure whether or not to record min and max. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`max_scale`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 20 is used.</td><td>* `minimum`: `-10`<br>* `maximum`: `20`<br></td><td width="20%">Configure the max scale factor.</td>
+</tr>
+<tr>
+<td width="5%">`max_size`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 160 is used.</td><td>* `minimum`: `2`<br></td><td width="20%">Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket.</td>
+</tr>
+<tr>
+<td width="5%">`record_min_max`</td><td>one of:<br>* `boolean`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, true is used.</td><td>No constraints.</td><td width="20%">Configure whether or not to record min and max.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -481,14 +537,31 @@ No snippets.
 
 ## BatchLogRecordProcessor <a id="batchlogrecordprocessor"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `export_timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 30000 is used. | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
-| `exporter` | [`LogRecordExporter`](#logrecordexporter) | `true` | Property is required and must be non-null. | No constraints. | Configure exporter. |
-| `max_export_batch_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 512 is used. | * `exclusiveMinimum`: `0`<br> | Configure maximum batch size. Value must be positive.<br> |
-| `max_queue_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 2048 is used. | * `exclusiveMinimum`: `0`<br> | Configure maximum queue size. Value must be positive.<br> |
-| `schedule_delay` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 1000 is used. | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`export_timeout`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 30000 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br></td>
+</tr>
+<tr>
+<td width="5%">`exporter`</td><td>[`LogRecordExporter`](#logrecordexporter)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure exporter.</td>
+</tr>
+<tr>
+<td width="5%">`max_export_batch_size`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 512 is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure maximum batch size. Value must be positive.<br></td>
+</tr>
+<tr>
+<td width="5%">`max_queue_size`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 2048 is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure maximum queue size. Value must be positive.<br></td>
+</tr>
+<tr>
+<td width="5%">`schedule_delay`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 1000 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -560,14 +633,31 @@ No snippets.
 
 ## BatchSpanProcessor <a id="batchspanprocessor"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `export_timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 30000 is used. | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
-| `exporter` | [`SpanExporter`](#spanexporter) | `true` | Property is required and must be non-null. | No constraints. | Configure exporter. |
-| `max_export_batch_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 512 is used. | * `exclusiveMinimum`: `0`<br> | Configure maximum batch size. Value must be positive.<br> |
-| `max_queue_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 2048 is used. | * `exclusiveMinimum`: `0`<br> | Configure maximum queue size. Value must be positive.<br> |
-| `schedule_delay` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 5000 is used. | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`export_timeout`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 30000 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br></td>
+</tr>
+<tr>
+<td width="5%">`exporter`</td><td>[`SpanExporter`](#spanexporter)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure exporter.</td>
+</tr>
+<tr>
+<td width="5%">`max_export_batch_size`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 512 is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure maximum batch size. Value must be positive.<br></td>
+</tr>
+<tr>
+<td width="5%">`max_queue_size`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 2048 is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure maximum queue size. Value must be positive.<br></td>
+</tr>
+<tr>
+<td width="5%">`schedule_delay`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 5000 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -639,17 +729,40 @@ No snippets.
 
 ## CardinalityLimits <a id="cardinalitylimits"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for counter instruments.<br> |
-| `default` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 2000 is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for all instrument types.<br>Instrument-specific cardinality limits take priority. <br> |
-| `gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for gauge instruments.<br> |
-| `histogram` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for histogram instruments.<br> |
-| `observable_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_counter instruments.<br> |
-| `observable_gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_gauge instruments.<br> |
-| `observable_up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_up_down_counter instruments.<br> |
-| `up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for up_down_counter instruments.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`counter`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, the value from .default is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure default cardinality limit for counter instruments.<br></td>
+</tr>
+<tr>
+<td width="5%">`default`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 2000 is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure default cardinality limit for all instrument types.<br>Instrument-specific cardinality limits take priority. <br></td>
+</tr>
+<tr>
+<td width="5%">`gauge`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, the value from .default is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure default cardinality limit for gauge instruments.<br></td>
+</tr>
+<tr>
+<td width="5%">`histogram`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, the value from .default is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure default cardinality limit for histogram instruments.<br></td>
+</tr>
+<tr>
+<td width="5%">`observable_counter`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, the value from .default is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure default cardinality limit for observable_counter instruments.<br></td>
+</tr>
+<tr>
+<td width="5%">`observable_gauge`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, the value from .default is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure default cardinality limit for observable_gauge instruments.<br></td>
+</tr>
+<tr>
+<td width="5%">`observable_up_down_counter`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, the value from .default is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure default cardinality limit for observable_up_down_counter instruments.<br></td>
+</tr>
+<tr>
+<td width="5%">`up_down_counter`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, the value from .default is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure default cardinality limit for up_down_counter instruments.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -774,11 +887,22 @@ No snippets.
 
 ## ConsoleMetricExporter <a id="consolemetricexporter"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`default_histogram_aggregation`</td><td>[`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation)</td><td>`false`</td><td>If omitted, explicit_bucket_histogram is used.</td><td>No constraints.</td><td width="20%">Configure default histogram aggregation.<br></td>
+</tr>
+<tr>
+<td width="5%">`temporality_preference`</td><td>[`ExporterTemporalityPreference`](#exportertemporalitypreference)</td><td>`false`</td><td>If omitted, cumulative is used.</td><td>No constraints.</td><td width="20%">Configure temporality preference.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -948,11 +1072,22 @@ No snippets.
 
 ## ExplicitBucketHistogramAggregation <a id="explicitbuckethistogramaggregation"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `boundaries` | `array` of `number` | `false` | If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used. | * `minItems`: `0`<br> | Configure bucket boundaries.<br> |
-| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, true is used. | No constraints. | Configure record min and max.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`boundaries`</td><td>`array` of `number`</td><td>`false`</td><td>If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.</td><td>* `minItems`: `0`<br></td><td width="20%">Configure bucket boundaries.<br></td>
+</tr>
+<tr>
+<td width="5%">`record_min_max`</td><td>one of:<br>* `boolean`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, true is used.</td><td>No constraints.</td><td width="20%">Configure record min and max.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1095,13 +1230,28 @@ No snippets.
 
 ## GrpcTls <a id="grpctls"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `ca_file` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, system default certificate verification is used for secure connections. | No constraints. | Configure certificate used to verify a server's TLS credentials. <br>Absolute path to certificate file in PEM format.<br> |
-| `cert_file` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, mTLS is not used. | No constraints. | Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br> |
-| `insecure` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br> |
-| `key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, mTLS is not used. | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`ca_file`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, system default certificate verification is used for secure connections.</td><td>No constraints.</td><td width="20%">Configure certificate used to verify a server's TLS credentials. <br>Absolute path to certificate file in PEM format.<br></td>
+</tr>
+<tr>
+<td width="5%">`cert_file`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, mTLS is not used.</td><td>No constraints.</td><td width="20%">Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br></td>
+</tr>
+<tr>
+<td width="5%">`insecure`</td><td>one of:<br>* `boolean`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, false is used.</td><td>No constraints.</td><td width="20%">Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br></td>
+</tr>
+<tr>
+<td width="5%">`key_file`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, mTLS is not used.</td><td>No constraints.</td><td width="20%">Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1165,12 +1315,25 @@ No snippets.
 
 ## HttpTls <a id="httptls"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `ca_file` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, system default certificate verification is used for secure connections. | No constraints. | Configure certificate used to verify a server's TLS credentials. <br>Absolute path to certificate file in PEM format.<br> |
-| `cert_file` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, mTLS is not used. | No constraints. | Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br> |
-| `key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, mTLS is not used. | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`ca_file`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, system default certificate verification is used for secure connections.</td><td>No constraints.</td><td width="20%">Configure certificate used to verify a server's TLS credentials. <br>Absolute path to certificate file in PEM format.<br></td>
+</tr>
+<tr>
+<td width="5%">`cert_file`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, mTLS is not used.</td><td>No constraints.</td><td width="20%">Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br></td>
+</tr>
+<tr>
+<td width="5%">`key_file`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, mTLS is not used.</td><td>No constraints.</td><td width="20%">Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1227,11 +1390,22 @@ No snippets.
 
 ## IncludeExclude <a id="includeexclude"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `excluded` | `array` of `string` | `false` | If omitted, .included attributes are included. | * `minItems`: `1`<br> | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
-| `included` | `array` of `string` | `false` | If omitted, all values are included. | * `minItems`: `1`<br> | Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`excluded`</td><td>`array` of `string`</td><td>`false`</td><td>If omitted, .included attributes are included.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br></td>
+</tr>
+<tr>
+<td width="5%">`included`</td><td>`array` of `string`</td><td>`false`</td><td>If omitted, all values are included.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1392,12 +1566,25 @@ No snippets.
 
 ## LoggerProvider <a id="loggerprovider"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `limits` | [`LogRecordLimits`](#logrecordlimits) | `false` | If omitted, default values as described in LogRecordLimits are used. | No constraints. | Configure log record limits. See also attribute_limits. |
-| `processors` | `array` of [`LogRecordProcessor`](#logrecordprocessor) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure log record processors. |
-| `logger_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | `false` | If omitted, all loggers use default values as described in ExperimentalLoggerConfig. | No constraints. | Configure loggers.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`limits`</td><td>[`LogRecordLimits`](#logrecordlimits)</td><td>`false`</td><td>If omitted, default values as described in LogRecordLimits are used.</td><td>No constraints.</td><td width="20%">Configure log record limits. See also attribute_limits.</td>
+</tr>
+<tr>
+<td width="5%">`processors`</td><td>`array` of [`LogRecordProcessor`](#logrecordprocessor)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure log record processors.</td>
+</tr>
+<tr>
+<td width="5%">`logger_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).</td><td>[`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator)</td><td>`false`</td><td>If omitted, all loggers use default values as described in ExperimentalLoggerConfig.</td><td>No constraints.</td><td width="20%">Configure loggers.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1451,13 +1638,28 @@ No snippets.
 
 `LogRecordExporter` is an [SDK extension plugin](#sdk-extension-plugins).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `console` | [`ConsoleExporter`](#consoleexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be console. |
-| `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with gRPC transport. |
-| `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with HTTP transport. |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`console`</td><td>[`ConsoleExporter`](#consoleexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be console.</td>
+</tr>
+<tr>
+<td width="5%">`otlp_grpc`</td><td>[`OtlpGrpcExporter`](#otlpgrpcexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be OTLP with gRPC transport.</td>
+</tr>
+<tr>
+<td width="5%">`otlp_http`</td><td>[`OtlpHttpExporter`](#otlphttpexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be OTLP with HTTP transport.</td>
+</tr>
+<tr>
+<td width="5%">`otlp_file/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).</td><td>[`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be OTLP with file transport.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1515,11 +1717,22 @@ No snippets.
 
 ## LogRecordLimits <a id="logrecordlimits"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 128 is used. | * `minimum`: `0`<br> | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br> |
-| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, there is no limit. | * `minimum`: `0`<br> | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`attribute_count_limit`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 128 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br></td>
+</tr>
+<tr>
+<td width="5%">`attribute_value_length_limit`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, there is no limit.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1569,11 +1782,22 @@ No snippets.
 
 `LogRecordProcessor` is an [SDK extension plugin](#sdk-extension-plugins).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `batch` | [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | `false` | If omitted, ignore. | No constraints. | Configure a batch log record processor. |
-| `simple` | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | `false` | If omitted, ignore. | No constraints. | Configure a simple log record processor. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`batch`</td><td>[`BatchLogRecordProcessor`](#batchlogrecordprocessor)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure a batch log record processor.</td>
+</tr>
+<tr>
+<td width="5%">`simple`</td><td>[`SimpleLogRecordProcessor`](#simplelogrecordprocessor)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure a simple log record processor.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1622,13 +1846,28 @@ No snippets.
 
 ## MeterProvider <a id="meterprovider"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | If omitted, trace_based is used. | No constraints. | Configure the exemplar filter. <br> |
-| `readers` | `array` of [`MetricReader`](#metricreader) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure metric readers. |
-| `views` | `array` of [`View`](#view) | `false` | If omitted, no views are registered. | * `minItems`: `1`<br> | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> |
-| `meter_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | If omitted, all meters use default values as described in ExperimentalMeterConfig. | No constraints. | Configure meters.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`exemplar_filter`</td><td>[`ExemplarFilter`](#exemplarfilter)</td><td>`false`</td><td>If omitted, trace_based is used.</td><td>No constraints.</td><td width="20%">Configure the exemplar filter. <br></td>
+</tr>
+<tr>
+<td width="5%">`readers`</td><td>`array` of [`MetricReader`](#metricreader)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure metric readers.</td>
+</tr>
+<tr>
+<td width="5%">`views`</td><td>`array` of [`View`](#view)</td><td>`false`</td><td>If omitted, no views are registered.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br></td>
+</tr>
+<tr>
+<td width="5%">`meter_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).</td><td>[`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator)</td><td>`false`</td><td>If omitted, all meters use default values as described in ExperimentalMeterConfig.</td><td>No constraints.</td><td width="20%">Configure meters.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1690,10 +1929,19 @@ No snippets.
 
 `MetricProducer` is an [SDK extension plugin](#sdk-extension-plugins).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `opencensus` | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | `false` | If omitted, ignore. | No constraints. | Configure metric producer to be opencensus. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`opencensus`</td><td>[`OpenCensusMetricProducer`](#opencensusmetricproducer)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure metric producer to be opencensus.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1739,11 +1987,22 @@ No snippets.
 
 ## MetricReader <a id="metricreader"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `periodic` | [`PeriodicMetricReader`](#periodicmetricreader) | `false` | If omitted, ignore. | No constraints. | Configure a periodic metric reader. |
-| `pull` | [`PullMetricReader`](#pullmetricreader) | `false` | If omitted, ignore. | No constraints. | Configure a pull based metric reader. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`periodic`</td><td>[`PeriodicMetricReader`](#periodicmetricreader)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure a periodic metric reader.</td>
+</tr>
+<tr>
+<td width="5%">`pull`</td><td>[`PullMetricReader`](#pullmetricreader)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure a pull based metric reader.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1787,11 +2046,22 @@ No snippets.
 
 ## NameStringValuePair <a id="namestringvaluepair"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `name` | `string` | `true` | Property is required and must be non-null. | No constraints. | The name of the pair. |
-| `value` | one of:<br>* `string`<br>* `null`<br> | `true` | Property must be present, but if null the behavior is dependent on usage context. | No constraints. | The value of the pair. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`name`</td><td>`string`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">The name of the pair.</td>
+</tr>
+<tr>
+<td width="5%">`value`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`true`</td><td>Property must be present, but if null the behavior is dependent on usage context.</td><td>No constraints.</td><td width="20%">The value of the pair.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1869,20 +2139,49 @@ No snippets.
 
 ## OpenTelemetryConfiguration <a id="opentelemetryconfiguration"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `attribute_limits` | [`AttributeLimits`](#attributelimits) | `false` | If omitted, default values as described in AttributeLimits are used. | No constraints. | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.<br> |
-| `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure if the SDK is disabled or not.<br> |
-| `distribution` | [`Distribution`](#distribution) | `false` | If omitted, distribution defaults are used. | No constraints. | Defines configuration parameters specific to a particular OpenTelemetry distribution or vendor.<br>This section provides a standardized location for distribution-specific settings<br>that are not part of the OpenTelemetry configuration model.<br>It allows vendors to expose their own extensions and general configuration options.<br> |
-| `file_format` | `string` | `true` | Property is required and must be non-null. | No constraints. | The file format version.<br>Represented as a string including the semver major, minor version numbers (and optionally the meta tag). For example: "0.4", "1.0-rc.2", "1.0" (after stable release).<br>See https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md for more details.<br>The yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema<br> |
-| `log_level` | [`SeverityNumber`](#severitynumber) | `false` | If omitted, INFO is used. | No constraints. | Configure the log level of the internal logger used by the SDK.<br> |
-| `logger_provider` | [`LoggerProvider`](#loggerprovider) | `false` | If omitted, a noop logger provider is used. | No constraints. | Configure logger provider.<br> |
-| `meter_provider` | [`MeterProvider`](#meterprovider) | `false` | If omitted, a noop meter provider is used. | No constraints. | Configure meter provider.<br> |
-| `propagator` | [`Propagator`](#propagator) | `false` | If omitted, a noop propagator is used. | No constraints. | Configure text map context propagators.<br> |
-| `resource` | [`Resource`](#resource) | `false` | If omitted, the default resource is used. | No constraints. | Configure resource for all signals.<br> |
-| `tracer_provider` | [`TracerProvider`](#tracerprovider) | `false` | If omitted, a noop tracer provider is used. | No constraints. | Configure tracer provider.<br> |
-| `instrumentation/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure instrumentation.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`attribute_limits`</td><td>[`AttributeLimits`](#attributelimits)</td><td>`false`</td><td>If omitted, default values as described in AttributeLimits are used.</td><td>No constraints.</td><td width="20%">Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.<br></td>
+</tr>
+<tr>
+<td width="5%">`disabled`</td><td>one of:<br>* `boolean`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, false is used.</td><td>No constraints.</td><td width="20%">Configure if the SDK is disabled or not.<br></td>
+</tr>
+<tr>
+<td width="5%">`distribution`</td><td>[`Distribution`](#distribution)</td><td>`false`</td><td>If omitted, distribution defaults are used.</td><td>No constraints.</td><td width="20%">Defines configuration parameters specific to a particular OpenTelemetry distribution or vendor.<br>This section provides a standardized location for distribution-specific settings<br>that are not part of the OpenTelemetry configuration model.<br>It allows vendors to expose their own extensions and general configuration options.<br></td>
+</tr>
+<tr>
+<td width="5%">`file_format`</td><td>`string`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">The file format version.<br>Represented as a string including the semver major, minor version numbers (and optionally the meta tag). For example: "0.4", "1.0-rc.2", "1.0" (after stable release).<br>See https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md for more details.<br>The yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema<br></td>
+</tr>
+<tr>
+<td width="5%">`log_level`</td><td>[`SeverityNumber`](#severitynumber)</td><td>`false`</td><td>If omitted, INFO is used.</td><td>No constraints.</td><td width="20%">Configure the log level of the internal logger used by the SDK.<br></td>
+</tr>
+<tr>
+<td width="5%">`logger_provider`</td><td>[`LoggerProvider`](#loggerprovider)</td><td>`false`</td><td>If omitted, a noop logger provider is used.</td><td>No constraints.</td><td width="20%">Configure logger provider.<br></td>
+</tr>
+<tr>
+<td width="5%">`meter_provider`</td><td>[`MeterProvider`](#meterprovider)</td><td>`false`</td><td>If omitted, a noop meter provider is used.</td><td>No constraints.</td><td width="20%">Configure meter provider.<br></td>
+</tr>
+<tr>
+<td width="5%">`propagator`</td><td>[`Propagator`](#propagator)</td><td>`false`</td><td>If omitted, a noop propagator is used.</td><td>No constraints.</td><td width="20%">Configure text map context propagators.<br></td>
+</tr>
+<tr>
+<td width="5%">`resource`</td><td>[`Resource`](#resource)</td><td>`false`</td><td>If omitted, the default resource is used.</td><td>No constraints.</td><td width="20%">Configure resource for all signals.<br></td>
+</tr>
+<tr>
+<td width="5%">`tracer_provider`</td><td>[`TracerProvider`](#tracerprovider)</td><td>`false`</td><td>If omitted, a noop tracer provider is used.</td><td>No constraints.</td><td width="20%">Configure tracer provider.<br></td>
+</tr>
+<tr>
+<td width="5%">`instrumentation/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).</td><td>[`ExperimentalInstrumentation`](#experimentalinstrumentation)</td><td>`false`</td><td>If omitted, instrumentation defaults are used.</td><td>No constraints.</td><td width="20%">Configure instrumentation.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -1993,15 +2292,34 @@ No snippets.
 
 ## OtlpGrpcExporter <a id="otlpgrpcexporter"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Known values include: gzip, none. Implementations may support other compression algorithms.<br> |
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, http://localhost:4317 is used. | No constraints. | Configure endpoint.<br> |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, no headers are added. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
-| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no headers are added. | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 10000 is used. | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
-| `tls` | [`GrpcTls`](#grpctls) | `false` | If omitted, system default TLS settings are used. | No constraints. | Configure TLS settings for the exporter. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`compression`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, none is used.</td><td>No constraints.</td><td width="20%">Configure compression.<br>Known values include: gzip, none. Implementations may support other compression algorithms.<br></td>
+</tr>
+<tr>
+<td width="5%">`endpoint`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, http://localhost:4317 is used.</td><td>No constraints.</td><td width="20%">Configure endpoint.<br></td>
+</tr>
+<tr>
+<td width="5%">`headers`</td><td>`array` of [`NameStringValuePair`](#namestringvaluepair)</td><td>`false`</td><td>If omitted, no headers are added.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br></td>
+</tr>
+<tr>
+<td width="5%">`headers_list`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, no headers are added.</td><td>No constraints.</td><td width="20%">Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br></td>
+</tr>
+<tr>
+<td width="5%">`timeout`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 10000 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br></td>
+</tr>
+<tr>
+<td width="5%">`tls`</td><td>[`GrpcTls`](#grpctls)</td><td>`false`</td><td>If omitted, system default TLS settings are used.</td><td>No constraints.</td><td width="20%">Configure TLS settings for the exporter.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -2078,17 +2396,40 @@ No snippets.
 
 ## OtlpGrpcMetricExporter <a id="otlpgrpcmetricexporter"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Known values include: gzip, none. Implementations may support other compression algorithms.<br> |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br> |
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, http://localhost:4317 is used. | No constraints. | Configure endpoint.<br> |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, no headers are added. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
-| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no headers are added. | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br> |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 10000 is used. | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
-| `tls` | [`GrpcTls`](#grpctls) | `false` | If omitted, system default TLS settings are used. | No constraints. | Configure TLS settings for the exporter. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`compression`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, none is used.</td><td>No constraints.</td><td width="20%">Configure compression.<br>Known values include: gzip, none. Implementations may support other compression algorithms.<br></td>
+</tr>
+<tr>
+<td width="5%">`default_histogram_aggregation`</td><td>[`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation)</td><td>`false`</td><td>If omitted, explicit_bucket_histogram is used.</td><td>No constraints.</td><td width="20%">Configure default histogram aggregation.<br></td>
+</tr>
+<tr>
+<td width="5%">`endpoint`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, http://localhost:4317 is used.</td><td>No constraints.</td><td width="20%">Configure endpoint.<br></td>
+</tr>
+<tr>
+<td width="5%">`headers`</td><td>`array` of [`NameStringValuePair`](#namestringvaluepair)</td><td>`false`</td><td>If omitted, no headers are added.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br></td>
+</tr>
+<tr>
+<td width="5%">`headers_list`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, no headers are added.</td><td>No constraints.</td><td width="20%">Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br></td>
+</tr>
+<tr>
+<td width="5%">`temporality_preference`</td><td>[`ExporterTemporalityPreference`](#exportertemporalitypreference)</td><td>`false`</td><td>If omitted, cumulative is used.</td><td>No constraints.</td><td width="20%">Configure temporality preference.<br></td>
+</tr>
+<tr>
+<td width="5%">`timeout`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 10000 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br></td>
+</tr>
+<tr>
+<td width="5%">`tls`</td><td>[`GrpcTls`](#grpctls)</td><td>`false`</td><td>If omitted, system default TLS settings are used.</td><td>No constraints.</td><td width="20%">Configure TLS settings for the exporter.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -2215,16 +2556,37 @@ No snippets.
 
 ## OtlpHttpExporter <a id="otlphttpexporter"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Known values include: gzip, none. Implementations may support other compression algorithms.<br> |
-| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | If omitted, protobuf is used. | No constraints. | Configure the encoding used for messages. <br>Implementations may not support json.<br> |
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used. | No constraints. | Configure endpoint, including the signal specific path.<br> |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, no headers are added. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
-| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no headers are added. | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 10000 is used. | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
-| `tls` | [`HttpTls`](#httptls) | `false` | If omitted, system default TLS settings are used. | No constraints. | Configure TLS settings for the exporter. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`compression`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, none is used.</td><td>No constraints.</td><td width="20%">Configure compression.<br>Known values include: gzip, none. Implementations may support other compression algorithms.<br></td>
+</tr>
+<tr>
+<td width="5%">`encoding`</td><td>[`OtlpHttpEncoding`](#otlphttpencoding)</td><td>`false`</td><td>If omitted, protobuf is used.</td><td>No constraints.</td><td width="20%">Configure the encoding used for messages. <br>Implementations may not support json.<br></td>
+</tr>
+<tr>
+<td width="5%">`endpoint`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.</td><td>No constraints.</td><td width="20%">Configure endpoint, including the signal specific path.<br></td>
+</tr>
+<tr>
+<td width="5%">`headers`</td><td>`array` of [`NameStringValuePair`](#namestringvaluepair)</td><td>`false`</td><td>If omitted, no headers are added.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br></td>
+</tr>
+<tr>
+<td width="5%">`headers_list`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, no headers are added.</td><td>No constraints.</td><td width="20%">Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br></td>
+</tr>
+<tr>
+<td width="5%">`timeout`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 10000 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br></td>
+</tr>
+<tr>
+<td width="5%">`tls`</td><td>[`HttpTls`](#httptls)</td><td>`false`</td><td>If omitted, system default TLS settings are used.</td><td>No constraints.</td><td width="20%">Configure TLS settings for the exporter.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -2305,18 +2667,43 @@ No snippets.
 
 ## OtlpHttpMetricExporter <a id="otlphttpmetricexporter"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Known values include: gzip, none. Implementations may support other compression algorithms.<br> |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br> |
-| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | If omitted, protobuf is used. | No constraints. | Configure the encoding used for messages. <br>Implementations may not support json.<br> |
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, http://localhost:4318/v1/metrics is used. | No constraints. | Configure endpoint.<br> |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, no headers are added. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
-| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no headers are added. | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br> |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 10000 is used. | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
-| `tls` | [`HttpTls`](#httptls) | `false` | If omitted, system default TLS settings are used. | No constraints. | Configure TLS settings for the exporter. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`compression`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, none is used.</td><td>No constraints.</td><td width="20%">Configure compression.<br>Known values include: gzip, none. Implementations may support other compression algorithms.<br></td>
+</tr>
+<tr>
+<td width="5%">`default_histogram_aggregation`</td><td>[`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation)</td><td>`false`</td><td>If omitted, explicit_bucket_histogram is used.</td><td>No constraints.</td><td width="20%">Configure default histogram aggregation.<br></td>
+</tr>
+<tr>
+<td width="5%">`encoding`</td><td>[`OtlpHttpEncoding`](#otlphttpencoding)</td><td>`false`</td><td>If omitted, protobuf is used.</td><td>No constraints.</td><td width="20%">Configure the encoding used for messages. <br>Implementations may not support json.<br></td>
+</tr>
+<tr>
+<td width="5%">`endpoint`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, http://localhost:4318/v1/metrics is used.</td><td>No constraints.</td><td width="20%">Configure endpoint.<br></td>
+</tr>
+<tr>
+<td width="5%">`headers`</td><td>`array` of [`NameStringValuePair`](#namestringvaluepair)</td><td>`false`</td><td>If omitted, no headers are added.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br></td>
+</tr>
+<tr>
+<td width="5%">`headers_list`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, no headers are added.</td><td>No constraints.</td><td width="20%">Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br></td>
+</tr>
+<tr>
+<td width="5%">`temporality_preference`</td><td>[`ExporterTemporalityPreference`](#exportertemporalitypreference)</td><td>`false`</td><td>If omitted, cumulative is used.</td><td>No constraints.</td><td width="20%">Configure temporality preference.<br></td>
+</tr>
+<tr>
+<td width="5%">`timeout`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 10000 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br></td>
+</tr>
+<tr>
+<td width="5%">`tls`</td><td>[`HttpTls`](#httptls)</td><td>`false`</td><td>If omitted, system default TLS settings are used.</td><td>No constraints.</td><td width="20%">Configure TLS settings for the exporter.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -2414,14 +2801,31 @@ default_histogram_aggregation: base2_exponential_bucket_histogram
 
 ## ParentBasedSampler <a id="parentbasedsampler"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `local_parent_not_sampled` | [`Sampler`](#sampler) | `false` | If omitted, always_off is used. | No constraints. | Configure local_parent_not_sampled sampler.<br> |
-| `local_parent_sampled` | [`Sampler`](#sampler) | `false` | If omitted, always_on is used. | No constraints. | Configure local_parent_sampled sampler.<br> |
-| `remote_parent_not_sampled` | [`Sampler`](#sampler) | `false` | If omitted, always_off is used. | No constraints. | Configure remote_parent_not_sampled sampler.<br> |
-| `remote_parent_sampled` | [`Sampler`](#sampler) | `false` | If omitted, always_on is used. | No constraints. | Configure remote_parent_sampled sampler.<br> |
-| `root` | [`Sampler`](#sampler) | `false` | If omitted, always_on is used. | No constraints. | Configure root sampler.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`local_parent_not_sampled`</td><td>[`Sampler`](#sampler)</td><td>`false`</td><td>If omitted, always_off is used.</td><td>No constraints.</td><td width="20%">Configure local_parent_not_sampled sampler.<br></td>
+</tr>
+<tr>
+<td width="5%">`local_parent_sampled`</td><td>[`Sampler`](#sampler)</td><td>`false`</td><td>If omitted, always_on is used.</td><td>No constraints.</td><td width="20%">Configure local_parent_sampled sampler.<br></td>
+</tr>
+<tr>
+<td width="5%">`remote_parent_not_sampled`</td><td>[`Sampler`](#sampler)</td><td>`false`</td><td>If omitted, always_off is used.</td><td>No constraints.</td><td width="20%">Configure remote_parent_not_sampled sampler.<br></td>
+</tr>
+<tr>
+<td width="5%">`remote_parent_sampled`</td><td>[`Sampler`](#sampler)</td><td>`false`</td><td>If omitted, always_on is used.</td><td>No constraints.</td><td width="20%">Configure remote_parent_sampled sampler.<br></td>
+</tr>
+<tr>
+<td width="5%">`root`</td><td>[`Sampler`](#sampler)</td><td>`false`</td><td>If omitted, always_on is used.</td><td>No constraints.</td><td width="20%">Configure root sampler.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -2476,14 +2880,31 @@ No snippets.
 
 ## PeriodicMetricReader <a id="periodicmetricreader"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | If omitted, default values as described in CardinalityLimits are used. | No constraints. | Configure cardinality limits. |
-| `exporter` | [`PushMetricExporter`](#pushmetricexporter) | `true` | Property is required and must be non-null. | No constraints. | Configure exporter. |
-| `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 60000 is used. | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between start of two consecutive exports. <br>Value must be non-negative.<br> |
-| `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | If omitted, no metric producers are added. | * `minItems`: `1`<br> | Configure metric producers. |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 30000 is used. | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`cardinality_limits`</td><td>[`CardinalityLimits`](#cardinalitylimits)</td><td>`false`</td><td>If omitted, default values as described in CardinalityLimits are used.</td><td>No constraints.</td><td width="20%">Configure cardinality limits.</td>
+</tr>
+<tr>
+<td width="5%">`exporter`</td><td>[`PushMetricExporter`](#pushmetricexporter)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure exporter.</td>
+</tr>
+<tr>
+<td width="5%">`interval`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 60000 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure delay interval (in milliseconds) between start of two consecutive exports. <br>Value must be non-negative.<br></td>
+</tr>
+<tr>
+<td width="5%">`producers`</td><td>`array` of [`MetricProducer`](#metricproducer)</td><td>`false`</td><td>If omitted, no metric producers are added.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure metric producers.</td>
+</tr>
+<tr>
+<td width="5%">`timeout`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 30000 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -2551,11 +2972,22 @@ No snippets.
 
 ## Propagator <a id="propagator"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | If omitted, and .composite_list is omitted or null, a noop propagator is used. | * `minItems`: `1`<br> | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br> |
-| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, and .composite is omitted or null, a noop propagator is used. | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`composite`</td><td>`array` of [`TextMapPropagator`](#textmappropagator)</td><td>`false`</td><td>If omitted, and .composite_list is omitted or null, a noop propagator is used.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br></td>
+</tr>
+<tr>
+<td width="5%">`composite_list`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, and .composite is omitted or null, a noop propagator is used.</td><td>No constraints.</td><td width="20%">Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -2604,10 +3036,19 @@ No snippets.
 
 `PullMetricExporter` is an [SDK extension plugin](#sdk-extension-plugins).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `prometheus/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be prometheus.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`prometheus/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).</td><td>[`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be prometheus.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -2652,12 +3093,25 @@ No snippets.
 
 ## PullMetricReader <a id="pullmetricreader"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | If omitted, default values as described in CardinalityLimits are used. | No constraints. | Configure cardinality limits. |
-| `exporter` | [`PullMetricExporter`](#pullmetricexporter) | `true` | Property is required and must be non-null. | No constraints. | Configure exporter. |
-| `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | If omitted, no metric producers are added. | * `minItems`: `1`<br> | Configure metric producers. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`cardinality_limits`</td><td>[`CardinalityLimits`](#cardinalitylimits)</td><td>`false`</td><td>If omitted, default values as described in CardinalityLimits are used.</td><td>No constraints.</td><td width="20%">Configure cardinality limits.</td>
+</tr>
+<tr>
+<td width="5%">`exporter`</td><td>[`PullMetricExporter`](#pullmetricexporter)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure exporter.</td>
+</tr>
+<tr>
+<td width="5%">`producers`</td><td>`array` of [`MetricProducer`](#metricproducer)</td><td>`false`</td><td>If omitted, no metric producers are added.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure metric producers.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -2711,13 +3165,28 @@ No snippets.
 
 `PushMetricExporter` is an [SDK extension plugin](#sdk-extension-plugins).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `console` | [`ConsoleMetricExporter`](#consolemetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be console.<br> |
-| `otlp_grpc` | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with gRPC transport.<br> |
-| `otlp_http` | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with HTTP transport.<br> |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`console`</td><td>[`ConsoleMetricExporter`](#consolemetricexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be console.<br></td>
+</tr>
+<tr>
+<td width="5%">`otlp_grpc`</td><td>[`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be OTLP with gRPC transport.<br></td>
+</tr>
+<tr>
+<td width="5%">`otlp_http`</td><td>[`OtlpHttpMetricExporter`](#otlphttpmetricexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be OTLP with HTTP transport.<br></td>
+</tr>
+<tr>
+<td width="5%">`otlp_file/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).</td><td>[`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be OTLP with file transport.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -2774,13 +3243,28 @@ No snippets.
 
 ## Resource <a id="resource"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `attributes` | `array` of [`AttributeNameValue`](#attributenamevalue) | `false` | If omitted, no resource attributes are added. | * `minItems`: `1`<br> | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br> |
-| `attributes_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no resource attributes are added. | No constraints. | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br> |
-| `schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no schema URL is used. | No constraints. | Configure resource schema URL.<br> |
-| `detection/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` | If omitted, resource detection is disabled. | No constraints. | Configure resource detection.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`attributes`</td><td>`array` of [`AttributeNameValue`](#attributenamevalue)</td><td>`false`</td><td>If omitted, no resource attributes are added.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br></td>
+</tr>
+<tr>
+<td width="5%">`attributes_list`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, no resource attributes are added.</td><td>No constraints.</td><td width="20%">Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br></td>
+</tr>
+<tr>
+<td width="5%">`schema_url`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, no schema URL is used.</td><td>No constraints.</td><td width="20%">Configure resource schema URL.<br></td>
+</tr>
+<tr>
+<td width="5%">`detection/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).</td><td>[`ExperimentalResourceDetection`](#experimentalresourcedetection)</td><td>`false`</td><td>If omitted, resource detection is disabled.</td><td>No constraints.</td><td width="20%">Configure resource detection.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -2840,16 +3324,37 @@ No snippets.
 
 `Sampler` is an [SDK extension plugin](#sdk-extension-plugins).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `always_off` | [`AlwaysOffSampler`](#alwaysoffsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_off. |
-| `always_on` | [`AlwaysOnSampler`](#alwaysonsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_on. |
-| `parent_based` | [`ParentBasedSampler`](#parentbasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be parent_based. |
-| `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be trace_id_ratio_based. |
-| `composite/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be composite. |
-| `jaeger_remote/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be jaeger_remote. |
-| `probability/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be probability. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`always_off`</td><td>[`AlwaysOffSampler`](#alwaysoffsampler)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure sampler to be always_off.</td>
+</tr>
+<tr>
+<td width="5%">`always_on`</td><td>[`AlwaysOnSampler`](#alwaysonsampler)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure sampler to be always_on.</td>
+</tr>
+<tr>
+<td width="5%">`parent_based`</td><td>[`ParentBasedSampler`](#parentbasedsampler)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure sampler to be parent_based.</td>
+</tr>
+<tr>
+<td width="5%">`trace_id_ratio_based`</td><td>[`TraceIdRatioBasedSampler`](#traceidratiobasedsampler)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure sampler to be trace_id_ratio_based.</td>
+</tr>
+<tr>
+<td width="5%">`composite/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).</td><td>[`ExperimentalComposableSampler`](#experimentalcomposablesampler)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure sampler to be composite.</td>
+</tr>
+<tr>
+<td width="5%">`jaeger_remote/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).</td><td>[`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure sampler to be jaeger_remote.</td>
+</tr>
+<tr>
+<td width="5%">`probability/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).</td><td>[`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure sampler to be probability.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3054,10 +3559,19 @@ No snippets.
 
 ## SimpleLogRecordProcessor <a id="simplelogrecordprocessor"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `exporter` | [`LogRecordExporter`](#logrecordexporter) | `true` | Property is required and must be non-null. | No constraints. | Configure exporter. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`exporter`</td><td>[`LogRecordExporter`](#logrecordexporter)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure exporter.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3097,10 +3611,19 @@ No snippets.
 
 ## SimpleSpanProcessor <a id="simplespanprocessor"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `exporter` | [`SpanExporter`](#spanexporter) | `true` | Property is required and must be non-null. | No constraints. | Configure exporter. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`exporter`</td><td>[`SpanExporter`](#spanexporter)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure exporter.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3142,13 +3665,28 @@ No snippets.
 
 `SpanExporter` is an [SDK extension plugin](#sdk-extension-plugins).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `console` | [`ConsoleExporter`](#consoleexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be console. |
-| `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with gRPC transport. |
-| `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with HTTP transport. |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`console`</td><td>[`ConsoleExporter`](#consoleexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be console.</td>
+</tr>
+<tr>
+<td width="5%">`otlp_grpc`</td><td>[`OtlpGrpcExporter`](#otlpgrpcexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be OTLP with gRPC transport.</td>
+</tr>
+<tr>
+<td width="5%">`otlp_http`</td><td>[`OtlpHttpExporter`](#otlphttpexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be OTLP with HTTP transport.</td>
+</tr>
+<tr>
+<td width="5%">`otlp_file/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).</td><td>[`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure exporter to be OTLP with file transport.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3257,15 +3795,34 @@ No snippets.
 
 ## SpanLimits <a id="spanlimits"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 128 is used. | * `minimum`: `0`<br> | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br> |
-| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, there is no limit. | * `minimum`: `0`<br> | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br> |
-| `event_attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 128 is used. | * `minimum`: `0`<br> | Configure max attributes per span event. <br>Value must be non-negative.<br> |
-| `event_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 128 is used. | * `minimum`: `0`<br> | Configure max span event count. <br>Value must be non-negative.<br> |
-| `link_attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 128 is used. | * `minimum`: `0`<br> | Configure max attributes per span link. <br>Value must be non-negative.<br> |
-| `link_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 128 is used. | * `minimum`: `0`<br> | Configure max span link count. <br>Value must be non-negative.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`attribute_count_limit`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 128 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br></td>
+</tr>
+<tr>
+<td width="5%">`attribute_value_length_limit`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, there is no limit.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br></td>
+</tr>
+<tr>
+<td width="5%">`event_attribute_count_limit`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 128 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max attributes per span event. <br>Value must be non-negative.<br></td>
+</tr>
+<tr>
+<td width="5%">`event_count_limit`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 128 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max span event count. <br>Value must be non-negative.<br></td>
+</tr>
+<tr>
+<td width="5%">`link_attribute_count_limit`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 128 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max attributes per span link. <br>Value must be non-negative.<br></td>
+</tr>
+<tr>
+<td width="5%">`link_count_limit`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 128 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure max span link count. <br>Value must be non-negative.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3347,11 +3904,22 @@ No snippets.
 
 `SpanProcessor` is an [SDK extension plugin](#sdk-extension-plugins).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `batch` | [`BatchSpanProcessor`](#batchspanprocessor) | `false` | If omitted, ignore. | No constraints. | Configure a batch span processor. |
-| `simple` | [`SimpleSpanProcessor`](#simplespanprocessor) | `false` | If omitted, ignore. | No constraints. | Configure a simple span processor. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`batch`</td><td>[`BatchSpanProcessor`](#batchspanprocessor)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure a batch span processor.</td>
+</tr>
+<tr>
+<td width="5%">`simple`</td><td>[`SimpleSpanProcessor`](#simplespanprocessor)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure a simple span processor.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3429,15 +3997,34 @@ No snippets.
 
 `TextMapPropagator` is an [SDK extension plugin](#sdk-extension-plugins).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `b3` | [`B3Propagator`](#b3propagator) | `false` | If omitted, ignore. | No constraints. | Include the zipkin b3 propagator. |
-| `b3multi` | [`B3MultiPropagator`](#b3multipropagator) | `false` | If omitted, ignore. | No constraints. | Include the zipkin b3 multi propagator. |
-| `baggage` | [`BaggagePropagator`](#baggagepropagator) | `false` | If omitted, ignore. | No constraints. | Include the w3c baggage propagator. |
-| `jaeger` | [`JaegerPropagator`](#jaegerpropagator) | `false` | If omitted, ignore. | No constraints. | Include the jaeger propagator. |
-| `ottrace` | [`OpenTracingPropagator`](#opentracingpropagator) | `false` | If omitted, ignore. | No constraints. | Include the opentracing propagator. |
-| `tracecontext` | [`TraceContextPropagator`](#tracecontextpropagator) | `false` | If omitted, ignore. | No constraints. | Include the w3c trace context propagator. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`b3`</td><td>[`B3Propagator`](#b3propagator)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Include the zipkin b3 propagator.</td>
+</tr>
+<tr>
+<td width="5%">`b3multi`</td><td>[`B3MultiPropagator`](#b3multipropagator)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Include the zipkin b3 multi propagator.</td>
+</tr>
+<tr>
+<td width="5%">`baggage`</td><td>[`BaggagePropagator`](#baggagepropagator)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Include the w3c baggage propagator.</td>
+</tr>
+<tr>
+<td width="5%">`jaeger`</td><td>[`JaegerPropagator`](#jaegerpropagator)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Include the jaeger propagator.</td>
+</tr>
+<tr>
+<td width="5%">`ottrace`</td><td>[`OpenTracingPropagator`](#opentracingpropagator)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Include the opentracing propagator.</td>
+</tr>
+<tr>
+<td width="5%">`tracecontext`</td><td>[`TraceContextPropagator`](#tracecontextpropagator)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Include the w3c trace context propagator.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3529,10 +4116,19 @@ No snippets.
 
 ## TraceIdRatioBasedSampler <a id="traceidratiobasedsampler"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | If omitted or null, 1.0 is used. | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure trace_id_ratio.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`ratio`</td><td>one of:<br>* `number`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 1.0 is used.</td><td>* `minimum`: `0`<br>* `maximum`: `1`<br></td><td width="20%">Configure trace_id_ratio.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3576,13 +4172,28 @@ No snippets.
 
 ## TracerProvider <a id="tracerprovider"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `limits` | [`SpanLimits`](#spanlimits) | `false` | If omitted, default values as described in SpanLimits are used. | No constraints. | Configure span limits. See also attribute_limits. |
-| `processors` | `array` of [`SpanProcessor`](#spanprocessor) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure span processors. |
-| `sampler` | [`Sampler`](#sampler) | `false` | If omitted, parent based sampler with a root of always_on is used. | No constraints. | Configure the sampler.<br> |
-| `tracer_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | If omitted, all tracers use default values as described in ExperimentalTracerConfig. | No constraints. | Configure tracers.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`limits`</td><td>[`SpanLimits`](#spanlimits)</td><td>`false`</td><td>If omitted, default values as described in SpanLimits are used.</td><td>No constraints.</td><td width="20%">Configure span limits. See also attribute_limits.</td>
+</tr>
+<tr>
+<td width="5%">`processors`</td><td>`array` of [`SpanProcessor`](#spanprocessor)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure span processors.</td>
+</tr>
+<tr>
+<td width="5%">`sampler`</td><td>[`Sampler`](#sampler)</td><td>`false`</td><td>If omitted, parent based sampler with a root of always_on is used.</td><td>No constraints.</td><td width="20%">Configure the sampler.<br></td>
+</tr>
+<tr>
+<td width="5%">`tracer_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).</td><td>[`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator)</td><td>`false`</td><td>If omitted, all tracers use default values as described in ExperimentalTracerConfig.</td><td>No constraints.</td><td width="20%">Configure tracers.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3638,11 +4249,22 @@ No snippets.
 
 ## View <a id="view"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `selector` | [`ViewSelector`](#viewselector) | `true` | Property is required and must be non-null. | No constraints. | Configure view selector. <br>Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.<br> |
-| `stream` | [`ViewStream`](#viewstream) | `true` | Property is required and must be non-null. | No constraints. | Configure view stream. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`selector`</td><td>[`ViewSelector`](#viewselector)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure view selector. <br>Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.<br></td>
+</tr>
+<tr>
+<td width="5%">`stream`</td><td>[`ViewStream`](#viewstream)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure view stream.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3702,15 +4324,34 @@ stream:
 
 ## ViewSelector <a id="viewselector"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `instrument_name` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all instrument names match. | No constraints. | Configure instrument name selection criteria.<br> |
-| `instrument_type` | [`InstrumentType`](#instrumenttype) | `false` | If omitted, all instrument types match. | No constraints. | Configure instrument type selection criteria.<br> |
-| `meter_name` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all meter names match. | No constraints. | Configure meter name selection criteria.<br> |
-| `meter_schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all meter schema URLs match. | No constraints. | Configure meter schema url selection criteria.<br> |
-| `meter_version` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all meter versions match. | No constraints. | Configure meter version selection criteria.<br> |
-| `unit` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all instrument units match. | No constraints. | Configure the instrument unit selection criteria.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`instrument_name`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, all instrument names match.</td><td>No constraints.</td><td width="20%">Configure instrument name selection criteria.<br></td>
+</tr>
+<tr>
+<td width="5%">`instrument_type`</td><td>[`InstrumentType`](#instrumenttype)</td><td>`false`</td><td>If omitted, all instrument types match.</td><td>No constraints.</td><td width="20%">Configure instrument type selection criteria.<br></td>
+</tr>
+<tr>
+<td width="5%">`meter_name`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, all meter names match.</td><td>No constraints.</td><td width="20%">Configure meter name selection criteria.<br></td>
+</tr>
+<tr>
+<td width="5%">`meter_schema_url`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, all meter schema URLs match.</td><td>No constraints.</td><td width="20%">Configure meter schema url selection criteria.<br></td>
+</tr>
+<tr>
+<td width="5%">`meter_version`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, all meter versions match.</td><td>No constraints.</td><td width="20%">Configure meter version selection criteria.<br></td>
+</tr>
+<tr>
+<td width="5%">`unit`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, all instrument units match.</td><td>No constraints.</td><td width="20%">Configure the instrument unit selection criteria.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3781,14 +4422,31 @@ No snippets.
 
 ## ViewStream <a id="viewstream"></a>
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `aggregation` | [`Aggregation`](#aggregation) | `false` | If omitted, default is used. | No constraints. | Configure aggregation of the resulting stream(s). <br> |
-| `aggregation_cardinality_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the metric reader's default cardinality limit is used. | * `exclusiveMinimum`: `0`<br> | Configure the aggregation cardinality limit.<br> |
-| `attribute_keys` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, all attribute keys are retained. | No constraints. | Configure attribute keys retained in the resulting stream(s).<br> |
-| `description` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, the instrument's origin description is used. | No constraints. | Configure metric description of the resulting stream(s).<br> |
-| `name` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, the instrument's original name is used. | No constraints. | Configure metric name of the resulting stream(s).<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`aggregation`</td><td>[`Aggregation`](#aggregation)</td><td>`false`</td><td>If omitted, default is used.</td><td>No constraints.</td><td width="20%">Configure aggregation of the resulting stream(s). <br></td>
+</tr>
+<tr>
+<td width="5%">`aggregation_cardinality_limit`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, the metric reader's default cardinality limit is used.</td><td>* `exclusiveMinimum`: `0`<br></td><td width="20%">Configure the aggregation cardinality limit.<br></td>
+</tr>
+<tr>
+<td width="5%">`attribute_keys`</td><td>[`IncludeExclude`](#includeexclude)</td><td>`false`</td><td>If omitted, all attribute keys are retained.</td><td>No constraints.</td><td width="20%">Configure attribute keys retained in the resulting stream(s).<br></td>
+</tr>
+<tr>
+<td width="5%">`description`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, the instrument's origin description is used.</td><td>No constraints.</td><td width="20%">Configure metric description of the resulting stream(s).<br></td>
+</tr>
+<tr>
+<td width="5%">`name`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, the instrument's original name is used.</td><td>No constraints.</td><td width="20%">Configure metric name of the resulting stream(s).<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3915,10 +4573,19 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `root` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `true` | Property is required and must be non-null. | No constraints. | Sampler to use when there is no parent. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`root`</td><td>[`ExperimentalComposableSampler`](#experimentalcomposablesampler)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Sampler to use when there is no parent.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -3963,10 +4630,19 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | If omitted or null, 1.0 is used. | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure ratio.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`ratio`</td><td>one of:<br>* `number`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 1.0 is used.</td><td>* `minimum`: `0`<br>* `maximum`: `1`<br></td><td width="20%">Configure ratio.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4013,10 +4689,19 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `rules` | one of:<br>* `array`<br>* `null`<br> | `false` | If omitted or null, no span is sampled. | No constraints. | The rules for the sampler, matched in order. If no rules match, the span is not sampled.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`rules`</td><td>one of:<br>* `array`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, no span is sampled.</td><td>No constraints.</td><td width="20%">The rules for the sampler, matched in order. If no rules match, the span is not sampled.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4064,14 +4749,31 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `attribute_patterns` | [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | `false` | If omitted, ignore. | No constraints. | Patterns to match against a single attribute. Non-string attributes are matched using their string representation:<br>for example, a pattern of "4*" would match any http.response.status_code in 400-499. For array attributes, if any<br>item matches, it is considered a match.<br> |
-| `attribute_values` | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | `false` | If omitted, ignore. | No constraints. | Values to match against a single attribute. Non-string attributes are matched using their string representation:<br>for example, a value of "404" would match the http.response.status_code 404. For array attributes, if any<br>item matches, it is considered a match.<br> |
-| `parent` | `array` of [`ExperimentalSpanParent`](#experimentalspanparent) | `false` | If omitted, ignore. | * `minItems`: `1`<br> | The parent span types to match. |
-| `sampler` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `true` | Property is required and must be non-null. | No constraints. | The sampler to use for matching spans. |
-| `span_kinds` | `array` of [`SpanKind`](#spankind) | `false` | If omitted, ignore. | * `minItems`: `1`<br> | The span kinds to match. If the span's kind matches any of these, it matches. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`attribute_patterns`</td><td>[`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Patterns to match against a single attribute. Non-string attributes are matched using their string representation:<br>for example, a pattern of "4*" would match any http.response.status_code in 400-499. For array attributes, if any<br>item matches, it is considered a match.<br></td>
+</tr>
+<tr>
+<td width="5%">`attribute_values`</td><td>[`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Values to match against a single attribute. Non-string attributes are matched using their string representation:<br>for example, a value of "404" would match the http.response.status_code 404. For array attributes, if any<br>item matches, it is considered a match.<br></td>
+</tr>
+<tr>
+<td width="5%">`parent`</td><td>`array` of [`ExperimentalSpanParent`](#experimentalspanparent)</td><td>`false`</td><td>If omitted, ignore.</td><td>* `minItems`: `1`<br></td><td width="20%">The parent span types to match.</td>
+</tr>
+<tr>
+<td width="5%">`sampler`</td><td>[`ExperimentalComposableSampler`](#experimentalcomposablesampler)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">The sampler to use for matching spans.</td>
+</tr>
+<tr>
+<td width="5%">`span_kinds`</td><td>`array` of [`SpanKind`](#spankind)</td><td>`false`</td><td>If omitted, ignore.</td><td>* `minItems`: `1`<br></td><td width="20%">The span kinds to match. If the span's kind matches any of these, it matches.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4137,12 +4839,25 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `excluded` | `array` of `string` | `false` | If omitted, .included attributes are included. | * `minItems`: `1`<br> | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
-| `included` | `array` of `string` | `false` | If omitted, all values are included. | * `minItems`: `1`<br> | Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
-| `key` | `string` | `true` | Property is required and must be non-null. | No constraints. | The attribute key to match against. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`excluded`</td><td>`array` of `string`</td><td>`false`</td><td>If omitted, .included attributes are included.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br></td>
+</tr>
+<tr>
+<td width="5%">`included`</td><td>`array` of `string`</td><td>`false`</td><td>If omitted, all values are included.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br></td>
+</tr>
+<tr>
+<td width="5%">`key`</td><td>`string`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">The attribute key to match against.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4201,11 +4916,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `key` | `string` | `true` | Property is required and must be non-null. | No constraints. | The attribute key to match against. |
-| `values` | `array` of `string` | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | The attribute values to match against. If the attribute's value matches any of these, it matches. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`key`</td><td>`string`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">The attribute key to match against.</td>
+</tr>
+<tr>
+<td width="5%">`values`</td><td>`array` of `string`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>* `minItems`: `1`<br></td><td width="20%">The attribute values to match against. If the attribute's value matches any of these, it matches.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4257,14 +4983,31 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `always_off` | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_off. |
-| `always_on` | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_on. |
-| `parent_threshold` | [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be parent_threshold.<br> |
-| `probability` | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be probability. |
-| `rule_based` | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be rule_based. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`always_off`</td><td>[`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure sampler to be always_off.</td>
+</tr>
+<tr>
+<td width="5%">`always_on`</td><td>[`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure sampler to be always_on.</td>
+</tr>
+<tr>
+<td width="5%">`parent_threshold`</td><td>[`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure sampler to be parent_threshold.<br></td>
+</tr>
+<tr>
+<td width="5%">`probability`</td><td>[`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure sampler to be probability.</td>
+</tr>
+<tr>
+<td width="5%">`rule_based`</td><td>[`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Configure sampler to be rule_based.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4360,11 +5103,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpInstrumentation are used. | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
-| `peer` | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | `false` | If omitted, defaults as described in ExperimentalPeerInstrumentation are used. | No constraints. | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`http`</td><td>[`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation)</td><td>`false`</td><td>If omitted, defaults as described in ExperimentalHttpInstrumentation are used.</td><td>No constraints.</td><td width="20%">Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br></td>
+</tr>
+<tr>
+<td width="5%">`peer`</td><td>[`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation)</td><td>`false`</td><td>If omitted, defaults as described in ExperimentalPeerInstrumentation are used.</td><td>No constraints.</td><td width="20%">Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4437,11 +5191,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `request_captured_headers` | `array` of `string` | `false` | If omitted, no outbound request headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for outbound http requests.<br> |
-| `response_captured_headers` | `array` of `string` | `false` | If omitted, no inbound response headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for inbound http responses.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`request_captured_headers`</td><td>`array` of `string`</td><td>`false`</td><td>If omitted, no outbound request headers are captured.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure headers to capture for outbound http requests.<br></td>
+</tr>
+<tr>
+<td width="5%">`response_captured_headers`</td><td>`array` of `string`</td><td>`false`</td><td>If omitted, no inbound response headers are captured.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure headers to capture for inbound http responses.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4492,11 +5257,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `client` | [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpClientInstrumentation are used. | No constraints. | Configure instrumentations following the http client semantic conventions. |
-| `server` | [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpServerInstrumentation are used. | No constraints. | Configure instrumentations following the http server semantic conventions. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`client`</td><td>[`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation)</td><td>`false`</td><td>If omitted, defaults as described in ExperimentalHttpClientInstrumentation are used.</td><td>No constraints.</td><td width="20%">Configure instrumentations following the http client semantic conventions.</td>
+</tr>
+<tr>
+<td width="5%">`server`</td><td>[`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation)</td><td>`false`</td><td>If omitted, defaults as described in ExperimentalHttpServerInstrumentation are used.</td><td>No constraints.</td><td width="20%">Configure instrumentations following the http server semantic conventions.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4539,11 +5315,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `request_captured_headers` | `array` of `string` | `false` | If omitted, no request headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for inbound http requests.<br> |
-| `response_captured_headers` | `array` of `string` | `false` | If omitted, no response headers are captures. | * `minItems`: `1`<br> | Configure headers to capture for outbound http responses.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`request_captured_headers`</td><td>`array` of `string`</td><td>`false`</td><td>If omitted, no request headers are captured.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure headers to capture for inbound http requests.<br></td>
+</tr>
+<tr>
+<td width="5%">`response_captured_headers`</td><td>`array` of `string`</td><td>`false`</td><td>If omitted, no response headers are captures.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure headers to capture for outbound http responses.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4594,21 +5381,52 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `cpp` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure C++ language-specific instrumentation libraries. |
-| `dotnet` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure .NET language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `erlang` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Erlang language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `general` | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | `false` | If omitted, default values as described in ExperimentalGeneralInstrumentation are used. | No constraints. | Configure general SemConv options that may apply to multiple languages and instrumentations.<br>Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.<br> |
-| `go` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Go language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `java` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Java language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `js` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure JavaScript language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `php` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure PHP language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `python` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Python language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `ruby` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Ruby language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `rust` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Rust language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `swift` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Swift language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`cpp`</td><td>[`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation)</td><td>`false`</td><td>If omitted, instrumentation defaults are used.</td><td>No constraints.</td><td width="20%">Configure C++ language-specific instrumentation libraries.</td>
+</tr>
+<tr>
+<td width="5%">`dotnet`</td><td>[`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation)</td><td>`false`</td><td>If omitted, instrumentation defaults are used.</td><td>No constraints.</td><td width="20%">Configure .NET language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br></td>
+</tr>
+<tr>
+<td width="5%">`erlang`</td><td>[`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation)</td><td>`false`</td><td>If omitted, instrumentation defaults are used.</td><td>No constraints.</td><td width="20%">Configure Erlang language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br></td>
+</tr>
+<tr>
+<td width="5%">`general`</td><td>[`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation)</td><td>`false`</td><td>If omitted, default values as described in ExperimentalGeneralInstrumentation are used.</td><td>No constraints.</td><td width="20%">Configure general SemConv options that may apply to multiple languages and instrumentations.<br>Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.<br></td>
+</tr>
+<tr>
+<td width="5%">`go`</td><td>[`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation)</td><td>`false`</td><td>If omitted, instrumentation defaults are used.</td><td>No constraints.</td><td width="20%">Configure Go language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br></td>
+</tr>
+<tr>
+<td width="5%">`java`</td><td>[`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation)</td><td>`false`</td><td>If omitted, instrumentation defaults are used.</td><td>No constraints.</td><td width="20%">Configure Java language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br></td>
+</tr>
+<tr>
+<td width="5%">`js`</td><td>[`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation)</td><td>`false`</td><td>If omitted, instrumentation defaults are used.</td><td>No constraints.</td><td width="20%">Configure JavaScript language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br></td>
+</tr>
+<tr>
+<td width="5%">`php`</td><td>[`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation)</td><td>`false`</td><td>If omitted, instrumentation defaults are used.</td><td>No constraints.</td><td width="20%">Configure PHP language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br></td>
+</tr>
+<tr>
+<td width="5%">`python`</td><td>[`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation)</td><td>`false`</td><td>If omitted, instrumentation defaults are used.</td><td>No constraints.</td><td width="20%">Configure Python language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br></td>
+</tr>
+<tr>
+<td width="5%">`ruby`</td><td>[`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation)</td><td>`false`</td><td>If omitted, instrumentation defaults are used.</td><td>No constraints.</td><td width="20%">Configure Ruby language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br></td>
+</tr>
+<tr>
+<td width="5%">`rust`</td><td>[`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation)</td><td>`false`</td><td>If omitted, instrumentation defaults are used.</td><td>No constraints.</td><td width="20%">Configure Rust language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br></td>
+</tr>
+<tr>
+<td width="5%">`swift`</td><td>[`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation)</td><td>`false`</td><td>If omitted, instrumentation defaults are used.</td><td>No constraints.</td><td width="20%">Configure Swift language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4691,12 +5509,25 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `endpoint` | `string` | `true` | Property is required and must be non-null. | No constraints. | Configure the endpoint of the jaeger remote sampling service. |
-| `initial_sampler` | [`Sampler`](#sampler) | `true` | Property is required and must be non-null. | No constraints. | Configure the initial sampler used before first configuration is fetched. |
-| `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 60000 is used. | * `minimum`: `0`<br> | Configure the polling interval (in milliseconds) to fetch from the remote sampling service. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`endpoint`</td><td>`string`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure the endpoint of the jaeger remote sampling service.</td>
+</tr>
+<tr>
+<td width="5%">`initial_sampler`</td><td>[`Sampler`](#sampler)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure the initial sampler used before first configuration is fetched.</td>
+</tr>
+<tr>
+<td width="5%">`interval`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 60000 is used.</td><td>* `minimum`: `0`<br></td><td width="20%">Configure the polling interval (in milliseconds) to fetch from the remote sampling service.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4796,12 +5627,25 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure if the logger is enabled or not.<br> |
-| `minimum_severity` | [`SeverityNumber`](#severitynumber) | `false` | If omitted, severity filtering is not applied. | No constraints. | Configure severity filtering.<br>Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.<br> |
-| `trace_based` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, trace based filtering is not applied. | No constraints. | Configure trace based filtering.<br>If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`disabled`</td><td>one of:<br>* `boolean`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, false is used.</td><td>No constraints.</td><td width="20%">Configure if the logger is enabled or not.<br></td>
+</tr>
+<tr>
+<td width="5%">`minimum_severity`</td><td>[`SeverityNumber`](#severitynumber)</td><td>`false`</td><td>If omitted, severity filtering is not applied.</td><td>No constraints.</td><td width="20%">Configure severity filtering.<br>Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.<br></td>
+</tr>
+<tr>
+<td width="5%">`trace_based`</td><td>one of:<br>* `boolean`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, trace based filtering is not applied.</td><td>No constraints.</td><td width="20%">Configure trace based filtering.<br>If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4857,11 +5701,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `default_config` | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `false` | If omitted, unmatched .loggers use default values as described in ExperimentalLoggerConfig. | No constraints. | Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers. |
-| `loggers` | `array` of [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | `false` | If omitted, all loggers use .default_config. | * `minItems`: `1`<br> | Configure loggers. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`default_config`</td><td>[`ExperimentalLoggerConfig`](#experimentalloggerconfig)</td><td>`false`</td><td>If omitted, unmatched .loggers use default values as described in ExperimentalLoggerConfig.</td><td>No constraints.</td><td width="20%">Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.</td>
+</tr>
+<tr>
+<td width="5%">`loggers`</td><td>`array` of [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig)</td><td>`false`</td><td>If omitted, all loggers use .default_config.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure loggers.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4910,11 +5765,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `config` | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `true` | Property is required and must be non-null. | No constraints. | The logger config. |
-| `name` | `string` | `true` | Property is required and must be non-null. | No constraints. | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`config`</td><td>[`ExperimentalLoggerConfig`](#experimentalloggerconfig)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">The logger config.</td>
+</tr>
+<tr>
+<td width="5%">`name`</td><td>`string`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -4966,10 +5832,19 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `disabled` | `boolean` | `false` | If omitted, false is used. | No constraints. | Configure if the meter is enabled or not. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`disabled`</td><td>`boolean`</td><td>`false`</td><td>If omitted, false is used.</td><td>No constraints.</td><td width="20%">Configure if the meter is enabled or not.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5013,11 +5888,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `default_config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` | If omitted, unmatched .meters use default values as described in ExperimentalMeterConfig. | No constraints. | Configure the default meter config used there is no matching entry in .meter_configurator/development.meters. |
-| `meters` | `array` of [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | `false` | If omitted, all meters used .default_config. | * `minItems`: `1`<br> | Configure meters. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`default_config`</td><td>[`ExperimentalMeterConfig`](#experimentalmeterconfig)</td><td>`false`</td><td>If omitted, unmatched .meters use default values as described in ExperimentalMeterConfig.</td><td>No constraints.</td><td width="20%">Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.</td>
+</tr>
+<tr>
+<td width="5%">`meters`</td><td>`array` of [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig)</td><td>`false`</td><td>If omitted, all meters used .default_config.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure meters.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5066,11 +5952,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `true` | Property is required and must be non-null. | No constraints. | The meter config. |
-| `name` | `string` | `true` | Property is required and must be non-null. | No constraints. | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`config`</td><td>[`ExperimentalMeterConfig`](#experimentalmeterconfig)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">The meter config.</td>
+</tr>
+<tr>
+<td width="5%">`name`</td><td>`string`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5122,10 +6019,19 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, stdout is used. | No constraints. | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`output_stream`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, stdout is used.</td><td>No constraints.</td><td width="20%">Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5171,12 +6077,25 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br> |
-| `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, stdout is used. | No constraints. | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`default_histogram_aggregation`</td><td>[`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation)</td><td>`false`</td><td>If omitted, explicit_bucket_histogram is used.</td><td>No constraints.</td><td width="20%">Configure default histogram aggregation.<br></td>
+</tr>
+<tr>
+<td width="5%">`output_stream`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, stdout is used.</td><td>No constraints.</td><td width="20%">Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br></td>
+</tr>
+<tr>
+<td width="5%">`temporality_preference`</td><td>[`ExporterTemporalityPreference`](#exportertemporalitypreference)</td><td>`false`</td><td>If omitted, cumulative is used.</td><td>No constraints.</td><td width="20%">Configure temporality preference.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5229,10 +6148,19 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `service_mapping` | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | `false` | If omitted, no peer service mappings are used. | * `minItems`: `1`<br> | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`service_mapping`</td><td>`array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping)</td><td>`false`</td><td>If omitted, no peer service mappings are used.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5275,11 +6203,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `peer` | `string` | `true` | Property is required and must be non-null. | No constraints. | The IP address to map.<br> |
-| `service` | `string` | `true` | Property is required and must be non-null. | No constraints. | The logical name corresponding to the IP address of .peer.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`peer`</td><td>`string`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">The IP address to map.<br></td>
+</tr>
+<tr>
+<td width="5%">`service`</td><td>`string`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">The logical name corresponding to the IP address of .peer.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5327,10 +6266,19 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | If omitted or null, 1.0 is used. | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure ratio.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`ratio`</td><td>one of:<br>* `number`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 1.0 is used.</td><td>* `minimum`: `0`<br>* `maximum`: `1`<br></td><td width="20%">Configure ratio.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5407,15 +6355,34 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `host` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, localhost is used. | No constraints. | Configure host.<br> |
-| `port` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 9464 is used. | No constraints. | Configure port.<br> |
-| `translation_strategy` | [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | `false` | If omitted, underscore_escaping_with_suffixes is used. | No constraints. | Configure how metric names are translated to Prometheus metric names. |
-| `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, no resource attributes are added. | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
-| `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a scope info metric.<br> |
-| `without_target_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a target info metric for the resource.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`host`</td><td>one of:<br>* `string`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, localhost is used.</td><td>No constraints.</td><td width="20%">Configure host.<br></td>
+</tr>
+<tr>
+<td width="5%">`port`</td><td>one of:<br>* `integer`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, 9464 is used.</td><td>No constraints.</td><td width="20%">Configure port.<br></td>
+</tr>
+<tr>
+<td width="5%">`translation_strategy`</td><td>[`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy)</td><td>`false`</td><td>If omitted, underscore_escaping_with_suffixes is used.</td><td>No constraints.</td><td width="20%">Configure how metric names are translated to Prometheus metric names.</td>
+</tr>
+<tr>
+<td width="5%">`with_resource_constant_labels`</td><td>[`IncludeExclude`](#includeexclude)</td><td>`false`</td><td>If omitted, no resource attributes are added.</td><td>No constraints.</td><td width="20%">Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.</td>
+</tr>
+<tr>
+<td width="5%">`without_scope_info`</td><td>one of:<br>* `boolean`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, false is used.</td><td>No constraints.</td><td width="20%">Configure Prometheus Exporter to produce metrics without a scope info metric.<br></td>
+</tr>
+<tr>
+<td width="5%">`without_target_info`</td><td>one of:<br>* `boolean`<br>* `null`<br></td><td>`false`</td><td>If omitted or null, false is used.</td><td>No constraints.</td><td width="20%">Configure Prometheus Exporter to produce metrics without a target info metric for the resource.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5540,11 +6507,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `attributes` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, all attributes from resource detectors are added. | No constraints. | Configure attributes provided by resource detectors. |
-| `detectors` | `array` of [`ExperimentalResourceDetector`](#experimentalresourcedetector) | `false` | If omitted, no resource detectors are enabled. | * `minItems`: `1`<br> | Configure resource detectors.<br>Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. <br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`attributes`</td><td>[`IncludeExclude`](#includeexclude)</td><td>`false`</td><td>If omitted, all attributes from resource detectors are added.</td><td>No constraints.</td><td width="20%">Configure attributes provided by resource detectors.</td>
+</tr>
+<tr>
+<td width="5%">`detectors`</td><td>`array` of [`ExperimentalResourceDetector`](#experimentalresourcedetector)</td><td>`false`</td><td>If omitted, no resource detectors are enabled.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure resource detectors.<br>Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. <br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5593,13 +6571,28 @@ No snippets.
 
 `ExperimentalResourceDetector` is an [SDK extension plugin](#sdk-extension-plugins).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `container` | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the container resource detector, which populates container.* attributes.<br> |
-| `host` | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the host resource detector, which populates host.* and os.* attributes.<br> |
-| `process` | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the process resource detector, which populates process.* attributes.<br> |
-| `service` | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`container`</td><td>[`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Enable the container resource detector, which populates container.* attributes.<br></td>
+</tr>
+<tr>
+<td width="5%">`host`</td><td>[`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Enable the host resource detector, which populates host.* and os.* attributes.<br></td>
+</tr>
+<tr>
+<td width="5%">`process`</td><td>[`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Enable the process resource detector, which populates process.* attributes.<br></td>
+</tr>
+<tr>
+<td width="5%">`service`</td><td>[`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector)</td><td>`false`</td><td>If omitted, ignore.</td><td>No constraints.</td><td width="20%">Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5737,10 +6730,19 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `disabled` | `boolean` | `false` | If omitted, false is used. | No constraints. | Configure if the tracer is enabled or not. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`disabled`</td><td>`boolean`</td><td>`false`</td><td>If omitted, false is used.</td><td>No constraints.</td><td width="20%">Configure if the tracer is enabled or not.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5784,11 +6786,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `default_config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` | If omitted, unmatched .tracers use default values as described in ExperimentalTracerConfig. | No constraints. | Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers. |
-| `tracers` | `array` of [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | `false` | If omitted, all tracers use .default_config. | * `minItems`: `1`<br> | Configure tracers. |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`default_config`</td><td>[`ExperimentalTracerConfig`](#experimentaltracerconfig)</td><td>`false`</td><td>If omitted, unmatched .tracers use default values as described in ExperimentalTracerConfig.</td><td>No constraints.</td><td width="20%">Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.</td>
+</tr>
+<tr>
+<td width="5%">`tracers`</td><td>`array` of [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig)</td><td>`false`</td><td>If omitted, all tracers use .default_config.</td><td>* `minItems`: `1`<br></td><td width="20%">Configure tracers.</td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
@@ -5837,11 +6850,22 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `true` | Property is required and must be non-null. | No constraints. | The tracer config. |
-| `name` | `string` | `true` | Property is required and must be non-null. | No constraints. | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
-
+<table>
+<tr>
+<th width='5%'>Property</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Default and Null Behavior</th>
+<th>Constraints</th>
+<th width='20%'>Description</th>
+</tr>
+<tr>
+<td width="5%">`config`</td><td>[`ExperimentalTracerConfig`](#experimentaltracerconfig)</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">The tracer config.</td>
+</tr>
+<tr>
+<td width="5%">`name`</td><td>`string`</td><td>`true`</td><td>Property is required and must be non-null.</td><td>No constraints.</td><td width="20%">Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br></td>
+</tr>
+</table>
 <details>
 <summary>Language support status</summary>
 
