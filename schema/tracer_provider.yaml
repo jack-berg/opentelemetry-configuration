@@ -25,21 +25,17 @@ required:
   - processors
 $defs:
   SpanKind:
-    type:
-      - string
-      - "null"
-    enum:
-      - internal
-      - server
-      - client
-      - producer
-      - consumer
-    enumDescriptions:
-      internal: internal, an internal span.
-      server: server, a server span.
-      client: client, a client span.
-      producer: producer, a producer span.
-      consumer: consumer, a consumer span.
+    oneOf:
+      - const: internal
+        description: internal, an internal span.
+      - const: server
+        description: server, a server span.
+      - const: client
+        description: client, a client span.
+      - const: producer
+        description: producer, a producer span.
+      - const: consumer
+        description: consumer, a consumer span.
   ExperimentalSpanParent:
     type:
       - string
