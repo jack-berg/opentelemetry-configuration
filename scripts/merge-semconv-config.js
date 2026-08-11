@@ -20,6 +20,24 @@ const INSTRUMENTATION_FILE = 'instrumentation.yaml';
 // otel-config schema (they are semconv-side metadata only).
 const SEMCONV_ONLY_FIELDS = new Set(['env_var']);
 
+// Fields that may be copied from a semconv config property to the
+// otel-config schema. Anything on a property that is neither here nor in
+// SEMCONV_ONLY_FIELDS is a hard error. This catches typos and prevents
+// silent expansion of the semconv-exposed surface.
+const ALLOWED_OTEL_CONFIG_FIELDS = new Set([
+    // otel-config metadata (consumed by compile-schema.js)
+    'description', 'defaultBehavior', 'nullBehavior',
+    // JSON schema keywords supported for scalar / array-of-scalar properties
+    'type', 'items', 'minItems', 'maxItems', 'enum',
+]);
+
+// Fields permitted inside an array property's `items`.
+const ALLOWED_ITEMS_FIELDS = new Set(['type']);
+
+// Semconv config properties are restricted to scalar types or arrays of
+// scalar types. No objects, no $ref, no oneOf/allOf.
+const SCALAR_TYPES = new Set(['string', 'integer', 'number', 'boolean']);
+
 // Error prefix so failures thrown from this module are recognizable when
 // surfaced by callers (compile-schema.js and friends).
 const ERR_PREFIX = 'semconv config merge:';
@@ -67,9 +85,44 @@ export function mergeSemconvConfig(sourceContentByFile) {
         if (prop.propertyName in targetType.properties) {
             throw new Error(`${ERR_PREFIX} property ${typeName}.properties.${prop.propertyName} already defined in ${INSTRUMENTATION_FILE}; it must be removed to be sourced from semconv (attribute '${prop.attribute}', logical name '${prop.logicalName}').`);
         }
-        const stripped = { ...prop.propertySchema };
-        for (const f of SEMCONV_ONLY_FIELDS) delete stripped[f];
+        validatePropertyShape(prop);
+        const stripped = {};
+        for (const [field, value] of Object.entries(prop.propertySchema)) {
+            if (ALLOWED_OTEL_CONFIG_FIELDS.has(field)) stripped[field] = value;
+        }
         targetType.properties[prop.propertyName] = stripped;
+    }
+}
+
+function validatePropertyShape(prop) {
+    const where = `${prop.attribute}[${prop.logicalName}].${prop.propertyName} in ${prop.sourceFile}`;
+    const schema = prop.propertySchema;
+
+    for (const field of Object.keys(schema)) {
+        if (!ALLOWED_OTEL_CONFIG_FIELDS.has(field) && !SEMCONV_ONLY_FIELDS.has(field)) {
+            throw new Error(`${ERR_PREFIX} unrecognized field '${field}' on ${where}. Allowed otel-config fields: ${[...ALLOWED_OTEL_CONFIG_FIELDS].join(', ')}. Semconv-only fields: ${[...SEMCONV_ONLY_FIELDS].join(', ')}.`);
+        }
+    }
+
+    const type = schema.type;
+    if (typeof type !== 'string' || (!SCALAR_TYPES.has(type) && type !== 'array')) {
+        throw new Error(`${ERR_PREFIX} type on ${where} must be one of ${[...SCALAR_TYPES, 'array'].join(', ')}, got ${JSON.stringify(type)}.`);
+    }
+
+    if (type === 'array') {
+        if (!schema.items || typeof schema.items !== 'object') {
+            throw new Error(`${ERR_PREFIX} array property ${where} is missing 'items'.`);
+        }
+        for (const field of Object.keys(schema.items)) {
+            if (!ALLOWED_ITEMS_FIELDS.has(field)) {
+                throw new Error(`${ERR_PREFIX} unrecognized field '${field}' on items of ${where}. Allowed: ${[...ALLOWED_ITEMS_FIELDS].join(', ')}.`);
+            }
+        }
+        if (!SCALAR_TYPES.has(schema.items.type)) {
+            throw new Error(`${ERR_PREFIX} items.type on ${where} must be a scalar type (${[...SCALAR_TYPES].join(', ')}), got ${JSON.stringify(schema.items.type)}.`);
+        }
+    } else if ('items' in schema) {
+        throw new Error(`${ERR_PREFIX} non-array property ${where} must not declare 'items'.`);
     }
 }
 
