@@ -3,11 +3,25 @@
 //
 // Reads attribute `annotations.config` blocks from semantic-conventions
 // model YAML under semantic-conventions/model/**, maps logical scope
-// keys to opentelemetry-configuration $defs type names, and injects the
-// properties into the corresponding types.
+// names to opentelemetry-configuration $defs type names, and injects
+// the properties into the corresponding types.
 //
-// Called by source-schema.js (which is the single point that loads the
-// schema into memory for compile-schema.js and other scripts).
+// Called by source-schema.js, which is the single point that loads the
+// schema into memory for compile-schema.js and other scripts.
+//
+// Semconv shape:
+//   annotations:
+//     config:
+//       general: <prose, semconv-only>
+//       env_var:                      # semconv-only
+//         - name: ...
+//           description: ...
+//       declarative:
+//         - config_scopes: [<logical>, ...]
+//           properties:
+//             <name>:
+//               type / items / minItems / maxItems / enum
+//               description / defaultBehavior / nullBehavior
 
 import fs from 'fs';
 import path from 'path';
@@ -16,14 +30,14 @@ import { semconvSourceDirPath } from './util.js';
 
 const INSTRUMENTATION_FILE = 'instrumentation.yaml';
 
-// Fields on a semconv config property that must not be copied to the
-// otel-config schema (they are semconv-side metadata only).
-const SEMCONV_ONLY_FIELDS = new Set(['env_var']);
+// Keys permitted directly under `annotations.config`. `general` and
+// `env_var` are semconv-side prose/metadata not copied into otel-config.
+// `declarative` carries the property definitions that get injected.
+const ALLOWED_CONFIG_KEYS = new Set(['general', 'env_var', 'declarative']);
 
-// Fields that may be copied from a semconv config property to the
-// otel-config schema. Anything on a property that is neither here nor in
-// SEMCONV_ONLY_FIELDS is a hard error. This catches typos and prevents
-// silent expansion of the semconv-exposed surface.
+// Fields that may be copied from a semconv declarative property into
+// the otel-config schema. Anything else on a property is a hard error
+// (catches typos and prevents silent expansion of the exposed surface).
 const ALLOWED_OTEL_CONFIG_FIELDS = new Set([
     // otel-config metadata (consumed by compile-schema.js)
     'description', 'defaultBehavior', 'nullBehavior',
@@ -31,20 +45,19 @@ const ALLOWED_OTEL_CONFIG_FIELDS = new Set([
     'type', 'items', 'minItems', 'maxItems', 'enum',
 ]);
 
-// Fields permitted inside an array property's `items`.
 const ALLOWED_ITEMS_FIELDS = new Set(['type']);
 
 // Semconv config properties are restricted to scalar types or arrays of
 // scalar types. No objects, no $ref, no oneOf/allOf.
 const SCALAR_TYPES = new Set(['string', 'integer', 'number', 'boolean']);
 
-// Error prefix so failures thrown from this module are recognizable when
-// surfaced by callers (compile-schema.js and friends).
+// Error prefix so failures thrown from this module are recognizable
+// when surfaced by callers.
 const ERR_PREFIX = 'semconv config merge:';
 
-// Logical type name (as used in semconv `annotations.config`) -> $defs
-// type name in schema/instrumentation.yaml. Unknown logical names are a
-// hard error.
+// Logical scope name (as used in semconv `config_scopes`) -> $defs
+// type name in schema/instrumentation.yaml. Unknown scopes are a hard
+// error.
 const LOGICAL_NAME_TO_TYPE = {
     'http.client': 'ExperimentalHttpClientInstrumentation',
     'http.server': 'ExperimentalHttpServerInstrumentation',
@@ -75,7 +88,7 @@ export function mergeSemconvConfig(sourceContentByFile) {
     const configProps = collectSemconvConfig(semconvSourceDirPath);
     for (const prop of configProps) {
         if (!(prop.logicalName in LOGICAL_NAME_TO_TYPE)) {
-            throw new Error(`${ERR_PREFIX} unknown logical type name '${prop.logicalName}' on attribute '${prop.attribute}' in ${prop.sourceFile}. Known: ${Object.keys(LOGICAL_NAME_TO_TYPE).join(', ')}`);
+            throw new Error(`${ERR_PREFIX} unknown logical scope name '${prop.logicalName}' on attribute '${prop.attribute}' in ${prop.sourceFile}. Known: ${Object.keys(LOGICAL_NAME_TO_TYPE).join(', ')}`);
         }
         const typeName = LOGICAL_NAME_TO_TYPE[prop.logicalName];
         const targetType = defs[typeName];
@@ -83,7 +96,7 @@ export function mergeSemconvConfig(sourceContentByFile) {
             throw new Error(`${ERR_PREFIX} target type ${typeName} not found or has no properties in ${INSTRUMENTATION_FILE}`);
         }
         if (prop.propertyName in targetType.properties) {
-            throw new Error(`${ERR_PREFIX} property ${typeName}.properties.${prop.propertyName} already defined in ${INSTRUMENTATION_FILE}; it must be removed to be sourced from semconv (attribute '${prop.attribute}', logical name '${prop.logicalName}').`);
+            throw new Error(`${ERR_PREFIX} property ${typeName}.properties.${prop.propertyName} already defined in ${INSTRUMENTATION_FILE}; it must be removed to be sourced from semconv (attribute '${prop.attribute}', logical scope '${prop.logicalName}').`);
         }
         validatePropertyShape(prop);
         const stripped = {};
@@ -99,8 +112,8 @@ function validatePropertyShape(prop) {
     const schema = prop.propertySchema;
 
     for (const field of Object.keys(schema)) {
-        if (!ALLOWED_OTEL_CONFIG_FIELDS.has(field) && !SEMCONV_ONLY_FIELDS.has(field)) {
-            throw new Error(`${ERR_PREFIX} unrecognized field '${field}' on ${where}. Allowed otel-config fields: ${[...ALLOWED_OTEL_CONFIG_FIELDS].join(', ')}. Semconv-only fields: ${[...SEMCONV_ONLY_FIELDS].join(', ')}.`);
+        if (!ALLOWED_OTEL_CONFIG_FIELDS.has(field)) {
+            throw new Error(`${ERR_PREFIX} unrecognized field '${field}' on ${where}. Allowed: ${[...ALLOWED_OTEL_CONFIG_FIELDS].join(', ')}.`);
         }
     }
 
@@ -136,7 +149,7 @@ function collectSemconvConfig(rootDir) {
             throw new Error(`${ERR_PREFIX} failed to parse ${file}: ${e.message}`);
         }
         // yaml.parse returns null for empty files / files containing only
-        // comments; guard against that before accessing properties.
+        // comments; guard before accessing properties.
         if (!parsed || !Array.isArray(parsed.groups)) continue;
         for (const group of parsed.groups) {
             if (!Array.isArray(group.attributes)) continue;
@@ -144,20 +157,7 @@ function collectSemconvConfig(rootDir) {
                 const config = attr?.annotations?.config;
                 if (!config || typeof config !== 'object') continue;
                 const attrName = attr.id || attr.ref || '<unknown>';
-                for (const [logicalName, props] of Object.entries(config)) {
-                    if (!props || typeof props !== 'object') {
-                        throw new Error(`${ERR_PREFIX} invalid config entry '${logicalName}' on attribute '${attrName}' in ${file}: expected object of properties`);
-                    }
-                    for (const [propertyName, propertySchema] of Object.entries(props)) {
-                        results.push(new SemconvConfigProperty({
-                            attribute: attrName,
-                            logicalName,
-                            propertyName,
-                            propertySchema,
-                            sourceFile: file,
-                        }));
-                    }
-                }
+                collectFromConfigBlock(config, attrName, file, results);
             }
         }
     }
@@ -167,6 +167,44 @@ function collectSemconvConfig(rootDir) {
         a.propertyName.localeCompare(b.propertyName) ||
         a.attribute.localeCompare(b.attribute));
     return results;
+}
+
+function collectFromConfigBlock(config, attrName, file, results) {
+    for (const key of Object.keys(config)) {
+        if (!ALLOWED_CONFIG_KEYS.has(key)) {
+            throw new Error(`${ERR_PREFIX} unrecognized key '${key}' under annotations.config on attribute '${attrName}' in ${file}. Allowed: ${[...ALLOWED_CONFIG_KEYS].join(', ')}.`);
+        }
+    }
+    const declarative = config.declarative;
+    if (declarative === undefined) return;
+    if (!Array.isArray(declarative)) {
+        throw new Error(`${ERR_PREFIX} annotations.config.declarative on attribute '${attrName}' in ${file} must be an array.`);
+    }
+    for (let i = 0; i < declarative.length; i++) {
+        const entry = declarative[i];
+        if (!entry || typeof entry !== 'object') {
+            throw new Error(`${ERR_PREFIX} annotations.config.declarative[${i}] on attribute '${attrName}' in ${file} must be an object.`);
+        }
+        const scopes = entry.config_scopes;
+        if (!Array.isArray(scopes) || scopes.length === 0) {
+            throw new Error(`${ERR_PREFIX} annotations.config.declarative[${i}].config_scopes on attribute '${attrName}' in ${file} must be a non-empty array.`);
+        }
+        const props = entry.properties;
+        if (!props || typeof props !== 'object') {
+            throw new Error(`${ERR_PREFIX} annotations.config.declarative[${i}].properties on attribute '${attrName}' in ${file} must be an object.`);
+        }
+        for (const logicalName of scopes) {
+            for (const [propertyName, propertySchema] of Object.entries(props)) {
+                results.push(new SemconvConfigProperty({
+                    attribute: attrName,
+                    logicalName,
+                    propertyName,
+                    propertySchema,
+                    sourceFile: file,
+                }));
+            }
+        }
+    }
 }
 
 function listYamlFiles(dir) {
