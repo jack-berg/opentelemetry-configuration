@@ -1,0 +1,120 @@
+name: Incoming semconv diff
+
+# Keeps a pinned tracking issue up to date with the diff between the
+# currently pinned semconv submodule and open-telemetry/semantic-conventions@main.
+# See scratch/declarative-config-integration/plan.md milestone 6.
+
+on:
+  schedule:
+    - cron: '0 4 * * *'  # daily at 04:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  # Issue whose body gets rewritten on each run. Update this if the
+  # tracking issue moves.
+  ISSUE_NUMBER: '0'
+  UPSTREAM_REPO: 'open-telemetry/semantic-conventions'
+  UPSTREAM_BRANCH: 'main'
+
+jobs:
+  update-tracking-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out otel-config
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: recursive
+          persist-credentials: false
+
+      - name: install dependencies
+        run: npm install
+
+      - name: capture pinned semconv ref
+        id: pinned
+        run: |
+          pinned_sha=$(git -C semantic-conventions rev-parse HEAD)
+          pinned_url=$(git config -f .gitmodules submodule.semantic-conventions.url)
+          pinned_repo=$(echo "$pinned_url" | sed -E 's#(https?://github.com/|git@github.com:)##; s#\.git$##')
+          echo "sha=$pinned_sha" >> "$GITHUB_OUTPUT"
+          echo "label=${pinned_repo}@${pinned_sha:0:7}" >> "$GITHUB_OUTPUT"
+          echo "url=https://github.com/${pinned_repo}/commit/${pinned_sha}" >> "$GITHUB_OUTPUT"
+
+      - name: compile baseline schema
+        run: |
+          make compile-schema
+          cp opentelemetry_configuration.json /tmp/baseline.json
+
+      - name: override submodule with upstream main
+        id: upstream
+        run: |
+          cd semantic-conventions
+          git remote add upstream "https://github.com/${UPSTREAM_REPO}.git" 2>/dev/null || \
+            git remote set-url upstream "https://github.com/${UPSTREAM_REPO}.git"
+          git fetch --depth=1 upstream "${UPSTREAM_BRANCH}"
+          git checkout FETCH_HEAD
+          upstream_sha=$(git rev-parse HEAD)
+          cd ..
+          echo "sha=$upstream_sha" >> "$GITHUB_OUTPUT"
+          echo "label=${UPSTREAM_REPO}@${upstream_sha:0:7}" >> "$GITHUB_OUTPUT"
+          echo "url=https://github.com/${UPSTREAM_REPO}/commit/${upstream_sha}" >> "$GITHUB_OUTPUT"
+
+      - name: compile head schema and render issue body
+        env:
+          PINNED_LABEL: ${{ steps.pinned.outputs.label }}
+          PINNED_URL: ${{ steps.pinned.outputs.url }}
+          UPSTREAM_LABEL: ${{ steps.upstream.outputs.label }}
+          UPSTREAM_URL: ${{ steps.upstream.outputs.url }}
+        run: |
+          make compile-schema
+          head_json=opentelemetry_configuration.json
+          baseline_size=$(wc -c < /tmp/baseline.json)
+          head_size=$(wc -c < "$head_json")
+          delta=$((head_size - baseline_size))
+
+          # `diff` exits 1 when files differ; capture and continue.
+          diff_output=$(diff -u /tmp/baseline.json "$head_json" || true)
+
+          {
+            echo "_Updated $(date -u +%Y-%m-%dT%H:%M:%SZ)._"
+            echo
+            echo "## Comparing"
+            echo
+            echo "- **Baseline (pinned):** [\`${PINNED_LABEL}\`](${PINNED_URL})"
+            echo "- **Head (upstream main):** [\`${UPSTREAM_LABEL}\`](${UPSTREAM_URL})"
+            echo
+            echo "Schema size: ${baseline_size} → ${head_size} bytes (delta ${delta})."
+            echo
+            if [ -z "$diff_output" ]; then
+              echo "No changes to the compiled schema."
+            else
+              echo "<details>"
+              echo "<summary>Raw unified diff</summary>"
+              echo
+              echo '```diff'
+              printf '%s\n' "$diff_output"
+              echo '```'
+              echo
+              echo "</details>"
+            fi
+          } > /tmp/issue-body.md
+
+          echo "--- rendered body ---"
+          cat /tmp/issue-body.md
+
+      - name: update tracking issue
+        if: env.ISSUE_NUMBER != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue edit "${ISSUE_NUMBER}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --body-file /tmp/issue-body.md
+
+      - name: warn if tracking issue not configured
+        if: env.ISSUE_NUMBER == '0'
+        run: |
+          echo "::warning::ISSUE_NUMBER is 0; skipping issue edit. Set the ISSUE_NUMBER env in this workflow to the tracking issue number."
