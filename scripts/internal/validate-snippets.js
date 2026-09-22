@@ -1,10 +1,13 @@
 import fs from "fs";
-import {rootTypeName, schemaPath} from "./util.js";
+import yaml from "yaml";
 import Ajv from "ajv/dist/2020.js";
-import {readSnippets} from "./snippets.js";
+import {rootTypeName, schemaPath, snippetsDirPath} from "./util.js";
 import {readSourceTypesByType} from "./source-schema.js";
 
-// Initialize ajv
+const snippetFileNameFormat = "<JsonSchemaType>_<snake_case_snippet_description>.yaml";
+const yamlFileExtension = ".yaml";
+const snippetStart = "# SNIPPET_START";
+
 const ajv = new Ajv({ allErrors: true });
 const outputSchema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
 ajv.addSchema(outputSchema);
@@ -35,13 +38,12 @@ readSnippets()
             return;
         }
 
-        // Validate the snippet against the specific schema
-        // Return if schema is invalid, so we don't validate the entire snippet against the root schema and duplicate errors
+        // Validate the snippet against the specific schema first; if invalid,
+        // skip the whole-file check to avoid duplicate errors.
         if (!validate(snippet.file, snippetValidator, snippetTypeRef, snippet.parsedSnippetContent)) {
             return;
         }
 
-        // Validate entire snippet against root schema
         validate(snippet.file, rootValidator, rootJsonSchemaTypeRef, snippet.parsedFullContent);
     });
 
@@ -53,7 +55,43 @@ if (messages.length > 0) {
     process.exit(0);
 }
 
-// Helper functions
+function readSnippets() {
+    return fs.readdirSync(snippetsDirPath)
+        .filter(file => file.endsWith(yamlFileExtension))
+        .map(file => {
+            const fileParts = file.split('_');
+            if (fileParts.length < 2) {
+                throw new Error(`Invalid snippet file name: ${file}. File names follow the form ${snippetFileNameFormat}`);
+            }
+            const jsonSchemaType = fileParts[0];
+            fileParts[fileParts.length - 1] = fileParts[fileParts.length - 1].substring(0, fileParts[fileParts.length - 1].indexOf(yamlFileExtension));
+            const description = fileParts.slice(1)
+                .map(word => (word.charAt(0).toUpperCase() + word.slice(1)))
+                .join(" ");
+
+            // Read the full snippet file and extract the section after "# SNIPPET_START":
+            // find the marker line, then strip its indentation from each following line.
+            const rawFullContent = fs.readFileSync(snippetsDirPath + file, "utf-8");
+            const lines = rawFullContent.split("\n");
+            const snippetStartLineIndex = lines.findIndex(line => line.indexOf(snippetStart) !== -1);
+            if (snippetStartLineIndex === -1) {
+                throw new Error(`Snippet file ${file} does not contain ${snippetStart}`);
+            }
+            const snippetStartLine = lines[snippetStartLineIndex];
+            const snippetStartIndentation = snippetStartLine.indexOf(snippetStart);
+            const rawSnippetContent = lines.splice(snippetStartLineIndex + 1).map(line => line.substring(snippetStartIndentation)).join("\n");
+
+            return {
+                file,
+                description,
+                jsonSchemaType,
+                rawFullContent,
+                parsedFullContent: yaml.parse(rawFullContent),
+                rawSnippetContent,
+                parsedSnippetContent: yaml.parse(rawSnippetContent),
+            };
+        });
+}
 
 function validate(snippetFile, ajvValidator, ajvRef, data) {
     try {

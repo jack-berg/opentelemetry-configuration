@@ -1,59 +1,51 @@
-import fs from 'fs';
-import {rootTypeName, schemaPath} from "./util.js";
-import {readSourceTypesByType} from "./source-schema.js";
+/**
+ * Compile a map of source types into a single bundled JSON schema object.
+ *
+ * The root type's schema becomes the top-level schema; all other types are
+ * placed under `$defs`. Folds `defaultBehavior`, `nullBehavior`, and enum
+ * value descriptions into property descriptions. Rewrites cross-file `$ref`s
+ * to local `$defs` refs.
+ *
+ * @param sourceTypesByType map of type name -> SourceSchemaType, as produced
+ *                          by {@link readSourceTypesByType} from
+ *                          `./load-schema.js`. Must contain an entry keyed
+ *                          by `rootTypeName`.
+ * @param rootTypeName      name of the root type; its schema becomes the
+ *                          top-level output schema.
+ * @param options           optional:
+ *                            bundleId: string
+ *                              value to assign to the output `$id` field.
+ *                              Omitted from the output if not set.
+ */
+export function compileSchema(sourceTypesByType, rootTypeName, options = {}) {
+    if (!rootTypeName) throw new Error('compileSchema: rootTypeName is required');
+    const {bundleId} = options;
 
-// See the schema modeling rules in CONTRIBUTING.md. /alpha and /beta suffixes
-// are also permitted but omitted here as the schema has no instances of them.
-const identifier = /^[A-Za-z_][A-Za-z0-9_]*$/;
-const maturitySuffix = /\/development$/;
-const pascalCaseTypeName = /^[A-Z][A-Za-z0-9]*$/;
+    const sourceTypes = Object.values(sourceTypesByType).slice();
+    sourceTypes.sort((a, b) => a.type.localeCompare(b.type));
 
-// Read source schema
-const sourceTypes = Object.values(readSourceTypesByType());
+    const defs = {};
+    sourceTypes.filter(sourceSchemaType => sourceSchemaType.type !== rootTypeName)
+        .forEach(sourceSchemaType => {
+            defs[sourceSchemaType.type] = prepareSchemaForOutput(sourceSchemaType, sourceTypes);
+        });
 
-// Validate source types and exit early if there are any errors
-const messages = [];
-sourceTypes.forEach(sourceSchemaType => {
-    allPropertiesShouldHaveDescriptions(sourceSchemaType, messages);
-    allEnumValuesShouldHaveDescriptions(sourceSchemaType, messages);
-    sdkExtensionPluginSchema(sourceSchemaType, messages);
-    noSubschemas(sourceSchemaType, messages);
-    optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages);
-    namesShouldBeValidIdentifiers(sourceSchemaType, messages);
-    typeNamesShouldBePascalCase(sourceSchemaType, messages);
-});
-if (messages.length > 0) {
-    messages.forEach(message => console.log(message));
-    process.exit(1);
+    const rootType = sourceTypes.find(sourceSchemaType => sourceSchemaType.type === rootTypeName);
+    if (!rootType) {
+        throw new Error(`Root type ${rootTypeName} not found in source schema.`);
+    }
+    const rootTypeSchema = prepareSchemaForOutput(rootType, sourceTypes);
+
+    const output = {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        ...(bundleId ? {"$id": bundleId} : {}),
+        "title": rootTypeName,
+        ...rootTypeSchema,
+        "$defs": defs
+    };
+
+    return output;
 }
-
-// If we make it here, source schema is valid.
-
-// Construct and write full schema into single output file
-// All types go in $defs, except root type, which is the top level schema
-sourceTypes.sort((a, b) => a.type.localeCompare(b.type));
-const defs = {};
-sourceTypes.filter(sourceSchemaType => sourceSchemaType.type !== rootTypeName)
-    .forEach(sourceSchemaType => {
-        defs[sourceSchemaType.type] = prepareSchemaForOutput(sourceSchemaType, sourceTypes);
-    });
-
-const rootType = sourceTypes.find(sourceSchemaType => sourceSchemaType.type === rootTypeName);
-if (!rootType) {
-    throw new Error(`Root type ${rootTypeName} not found in source schema.`);
-}
-const rootTypeSchema = prepareSchemaForOutput(rootType, sourceTypes);
-
-const output = {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": rootTypeName,
-    ...rootTypeSchema,
-    "$defs": defs
-};
-
-fs.writeFileSync(schemaPath, JSON.stringify(output, null, 2));
-
-// Helper functions
 
 function prepareSchemaForOutput(sourceSchemaType, sourceTypes) {
     const schema = JSON.parse(JSON.stringify(sourceSchemaType.schema));
@@ -110,7 +102,6 @@ function enrichDescriptions(sourceSchemaType, schema, sourceTypes) {
         const sourceProperty = sourceSchemaType.properties.find(property => property.property === propertyKey);
         let description = propertySchema['description'];
 
-        // Add enum value descriptions if property is an enum type
         const enumSourceType = sourceProperty.types.map(type => sourceTypes.find(sourceType => sourceType.type === type)).find(sourceType => sourceType && sourceType.isEnumType());
         if (enumSourceType) {
             description = maybeAddLineBreak(description);
@@ -121,7 +112,6 @@ function enrichDescriptions(sourceSchemaType, schema, sourceTypes) {
             });
         }
 
-        // Add default and null behavior
         description = maybeAddLineBreak(description)
         description += sourceProperty.formatDefaultAndNullBehavior();
         if (!description.endsWith('\n')) {
@@ -136,120 +126,4 @@ function maybeAddLineBreak(str) {
         return str + '\n';
     }
     return str;
-}
-
-// Validation functions
-
-function allPropertiesShouldHaveDescriptions(sourceSchemaType, messages) {
-    sourceSchemaType.properties.forEach(property => {
-        if (!property.schema.description) {
-            messages.push(`Please add 'description' to ${sourceSchemaType.type}.${property.property}.`);
-        }
-    });
-}
-
-function allEnumValuesShouldHaveDescriptions(sourceSchemaType, messages) {
-    if (!sourceSchemaType.isEnumType()) {
-        return;
-    }
-    const enumDescriptions = sourceSchemaType.schema['enumDescriptions'];
-    if (!enumDescriptions) {
-        messages.push(`Please add 'enumDescriptions' to ${sourceSchemaType.type}.`);
-        return;
-    }
-    sourceSchemaType.enumValues.forEach(enumValue => {
-        if (!enumDescriptions[enumValue]) {
-            messages.push(`Please add entry for ${enumValue} to 'enumDescriptions' for ${sourceSchemaType.type}.`);
-        }
-    });
-    Object.keys(enumDescriptions).forEach(enumValue => {
-        if (!sourceSchemaType.enumValues.includes(enumValue)) {
-            messages.push(`Please remove entry for ${enumValue} from 'enumDescriptions' for ${sourceSchemaType.type}.`);
-        }
-    });
-}
-
-function sdkExtensionPluginSchema(sourceSchemaType, messages) {
-    const sdkExtensionPluginAdditionalProperties = JSON.stringify({"type": ["object", "null"]});
-
-    const schema = sourceSchemaType.schema;
-    if (!schema['isSdkExtensionPlugin']) {
-        return;
-    }
-    const type = schema['type'];
-    if (type !== 'object') {
-        messages.push(`Please set 'type' to 'object' for ${sourceSchemaType.type}.`);
-    }
-    const additionalProperties = schema['additionalProperties'];
-    if (JSON.stringify(additionalProperties) !== sdkExtensionPluginAdditionalProperties) {
-        messages.push(`Please set 'additionalProperties' to ${sdkExtensionPluginAdditionalProperties} for ${sourceSchemaType.type}.`);
-    }
-    const minProperties = schema['minProperties'];
-    if (minProperties !== 1) {
-        messages.push(`Please set 'minProperties' to 1 for ${sourceSchemaType.type}.`);
-    }
-    const maxProperties = schema['maxProperties'];
-    if (maxProperties !== 1) {
-        messages.push(`Please set 'maxProperties' to 1 for ${sourceSchemaType.type}.`);
-    }
-}
-
-function noSubschemas(sourceSchemaType, messages) {
-    if (sourceSchemaType.isEnumType()) {
-        return;
-    }
-    sourceSchemaType.properties.forEach(property => {
-        property.types.forEach(type => {
-            if (type === 'object') {
-                messages.push(`Please move subschema for ${sourceSchemaType.type}.${property.property} to top level type in $defs.`)
-            }
-        });
-    });
-}
-
-function namesShouldBeValidIdentifiers(sourceSchemaType, messages) {
-    const isValidName = name => identifier.test(name.replace(maturitySuffix, ''));
-    sourceSchemaType.properties.forEach(property => {
-        if (!isValidName(property.property)) {
-            messages.push(`Property name '${property.property}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix)`);
-        }
-    });
-    (sourceSchemaType.enumValues || []).forEach(enumValue => {
-        if (typeof enumValue === 'string' && !isValidName(enumValue)) {
-            messages.push(`Enum value '${enumValue}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix)`);
-        }
-    });
-}
-
-function typeNamesShouldBePascalCase(sourceSchemaType, messages) {
-    if (!pascalCaseTypeName.test(sourceSchemaType.type)) {
-        messages.push(`Type name '${sourceSchemaType.type}' must match ${pascalCaseTypeName} (PascalCase)`);
-    }
-}
-
-function optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages) {
-    if (sourceSchemaType.isEnumType()) {
-        return;
-    }
-    const required = sourceSchemaType.schema['required'] || [];
-    // Checks for optional properties
-    sourceSchemaType.properties
-        .filter(property => !required.includes(property.property) && !property.schema['defaultBehavior'])
-        .forEach(property => {
-            messages.push(`Please add 'defaultBehavior' to optional property ${sourceSchemaType.type}.${property.property}.`);
-        });
-    // Checks for required properties
-    sourceSchemaType.properties
-        .filter(property => required.includes(property.property))
-        .forEach(property => {
-            if (property.schema['defaultBehavior']) {
-                messages.push(`Please remove 'defaultBehavior' from required property ${sourceSchemaType.type}.${property.property}.`);
-            }
-            if (property.isNullable && !property.schema['nullBehavior']) {
-                messages.push(`Please add 'nullBehavior' to required nullable property ${sourceSchemaType.type}.${property.property}.`);
-            }
-            if (!property.isNullable && property.schema['nullBehavior']) {
-                messages.push(`Please remove 'nullBehavior' from required property ${sourceSchemaType.type}.${property.property}.`);
-            }
-        });
 }

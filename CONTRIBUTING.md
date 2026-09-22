@@ -367,7 +367,9 @@ OpenCensusMetricProducer:
 
 This repository has a variety of tooling assisting with the development of the JSON schema and associated artifacts.
 
-Much of the project tooling is written in JavaScript and uses [Node](https://nodejs.org/) to run. Before making changes to the project:
+Much of the project tooling is written in JavaScript and uses [Node](https://nodejs.org/) to run. See [scripts/README.md](scripts/README.md) for the layout of `scripts/` (generic modules) and `scripts/internal/` (this project's CLI entry points and helpers).
+
+Before making changes to the project:
 
 * Install the latest LTS release of **[Node](https://nodejs.org/)**. For example, using **[nvm][]** under Linux run:
 
@@ -475,7 +477,7 @@ make fix-language-implementations
 
 The `fix-language-implementations` target synchronizes the contents of these files as follows:
 
-* If a language implementation is known (i.e. defined in constant array `KNOWN_LANGUAGES` in [language-implementations.js](scripts/language-implementations.js)) but does not have a `meta_schema_language_{language}.yaml` file, add it.
+* If a language implementation is known (i.e. defined in constant array `KNOWN_LANGUAGES` in [language-implementations.js](scripts/internal/language-implementations.js)) but does not have a `meta_schema_language_{language}.yaml` file, add it.
 * If a `meta_schema_language_{language}.yaml` exists for a language not in `KNOWN_LANGUAGES`, delete it.
 * For each language implementation file:
     * If a type exists in the JSON schema and not in the language implementation file, add it.

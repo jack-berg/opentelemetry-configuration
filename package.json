@@ -1,10 +1,10 @@
 {
   "type": "module",
   "scripts": {
-    "compile-schema": "node scripts/compile-schema.js",
-    "generate-markdown": "node scripts/generate-markdown.js",
-    "validate-snippets": "node scripts/validate-snippets.js",
-    "fix-language-implementations": "node scripts/fix-language-implementations.js"
+    "compile-schema": "node scripts/internal/build-schema.js",
+    "generate-markdown": "node scripts/internal/generate-markdown.js",
+    "validate-snippets": "node scripts/internal/validate-snippets.js",
+    "fix-language-implementations": "node scripts/internal/fix-language-implementations.js"
   },
   "devDependencies": {
     "ajv-cli": "5.0.0"

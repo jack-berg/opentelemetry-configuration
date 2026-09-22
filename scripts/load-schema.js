@@ -1,26 +1,41 @@
 import fs from 'fs';
-import {
-    isExperimentalProperty,
-    metaSchemaFilePrefix,
-    rootTypeName,
-    schemaSourceDirPath
-} from "./util.js";
-import yaml from "yaml";
+import path from 'path';
+import yaml from 'yaml';
 
 const localDefPrefix = '#/$defs/';
 
-export function readSourceTypesByType() {
+/**
+ * Load source schema YAML files from a directory into a map of
+ * type name -> {@link SourceSchemaType}.
+ *
+ * @param sourceDir    directory containing source schema YAML files.
+ * @param rootTypeName name to assign to the root schema type.
+ * @param rootTypeFile file name (within `sourceDir`) whose top-level schema
+ *                     becomes the root type. Other `.yaml` files in the
+ *                     directory contribute their `$defs` entries.
+ * @param options      optional:
+ *                       includeFile: (filename) => boolean
+ *                         additional filter over the `.yaml` files in
+ *                         `sourceDir`. Return false to skip a file (e.g.
+ *                         meta-schemas). Defaults to accepting all files.
+ */
+export function readSourceTypesByType(sourceDir, rootTypeName, rootTypeFile, options = {}) {
+    if (!sourceDir) throw new Error('readSourceTypesByType: sourceDir is required');
+    if (!rootTypeName) throw new Error('readSourceTypesByType: rootTypeName is required');
+    if (!rootTypeFile) throw new Error('readSourceTypesByType: rootTypeFile is required');
+    const {includeFile = () => true} = options;
+
     const sourceTypesByType = {};
     const sourceContentByFile = {};
 
-    fs.readdirSync(schemaSourceDirPath)
-        .filter(file => file.endsWith('.yaml') && !file.startsWith(metaSchemaFilePrefix))
+    fs.readdirSync(sourceDir)
+        .filter(file => file.endsWith('.yaml') && includeFile(file))
         .forEach(file => {
-            const sourceContent = yaml.parse(fs.readFileSync(schemaSourceDirPath + file, "utf-8"));
+            const sourceContent = yaml.parse(fs.readFileSync(path.join(sourceDir, file), "utf-8"));
 
             sourceContentByFile[file] = sourceContent;
 
-            if (file === 'opentelemetry_configuration.yaml') {
+            if (file === rootTypeFile) {
                 sourceTypesByType[rootTypeName] = new SourceSchemaType(rootTypeName, file, sourceContent, '.', sourceContent);
             }
 
@@ -118,6 +133,10 @@ function resolveEnumValues(sourceSchemaType) {
     return enumValues;
 }
 
+/**
+ * Resolve a JSON schema $ref (either a local `#/$defs/<type>` ref or a
+ * cross-file ref) to the SourceSchemaType it points at. Throws if unresolved.
+ */
 export function resolveRef(ref, typesByType) {
     let response;
     if (ref.startsWith(localDefPrefix)) {
@@ -140,6 +159,26 @@ function getDefs(jsonSchema) {
     return defs;
 }
 
+/**
+ * True if `property` is an experimental property, denoted by the
+ * `/development` maturity suffix in its name.
+ */
+export function isExperimentalProperty(property) {
+    return property.endsWith('/development');
+}
+
+/**
+ * A single property on a SourceSchemaType.
+ *
+ * Fields:
+ *   property   property name as it appears in the source YAML.
+ *   types      resolved value types (JSON schema primitive names and/or
+ *              referenced source type names; `oneOf` for oneOf compositions).
+ *   isSeq      true if the property is an array.
+ *   isRequired true if the property is listed in the parent type's `required`.
+ *   isNullable true if `null` is one of the accepted types.
+ *   schema     the raw property sub-schema from the source YAML.
+ */
 export class SourceSchemaProperty {
     property;
     types;
@@ -157,6 +196,10 @@ export class SourceSchemaProperty {
         this.schema = schema;
     }
 
+    /**
+     * Render the `defaultBehavior` and `nullBehavior` metadata into a
+     * human-readable sentence, chosen based on required/nullable status.
+     */
     formatDefaultAndNullBehavior() {
         const defaultBehavior = this.schema['defaultBehavior'];
         const nullBehavior = this.schema['nullBehavior'];
@@ -177,6 +220,20 @@ export class SourceSchemaProperty {
     }
 }
 
+/**
+ * A top-level type in the source schema (either the root type or an entry
+ * under `$defs`).
+ *
+ * Fields:
+ *   type           type name.
+ *   sourceFile     YAML file the type was loaded from.
+ *   fileContent    parsed contents of that file.
+ *   jsonSchemaPath location within the file: `.` for the top-level schema,
+ *                  or `#/$defs/<name>` for a $defs entry.
+ *   schema         the raw type schema.
+ *   properties     resolved SourceSchemaProperty list (empty for enum types).
+ *   enumValues     enum value list, or null if this type is not an enum.
+ */
 export class SourceSchemaType {
     type;
     sourceFile;
@@ -184,7 +241,7 @@ export class SourceSchemaType {
     jsonSchemaPath;
     schema;
     properties;
-    enumValues; // null if not enum
+    enumValues;
 
     constructor(type, sourceFile, fileContent, jsonSchemaPath, schema) {
         this.type = type;
@@ -200,6 +257,10 @@ export class SourceSchemaType {
         return this.enumValues !== null;
     }
 
+    /**
+     * Cross-file JSON schema reference to this type, e.g.
+     * `foo.yaml#/$defs/Bar` or `foo.yaml` for a file's top-level schema.
+     */
     jsonSchemaRef() {
         let ref = this.sourceFile;
         if (this.jsonSchemaPath !== '.') {

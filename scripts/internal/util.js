@@ -5,16 +5,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const metaSchemaFilePrefix = "meta_schema";
-export const schemaSourceDirPath = __dirname + "/../schema/";
-export const schemaPath = __dirname + `/../opentelemetry_configuration.json`;
-export const languageSupportStatusPath = __dirname + "/../language-support-status.md";
+export const schemaSourceDirPath = __dirname + "/../../schema/";
+export const schemaPath = __dirname + `/../../opentelemetry_configuration.json`;
+export const languageSupportStatusPath = __dirname + "/../../language-support-status.md";
 
 export const metaSchemaLanguageFilePrefix = `${metaSchemaFilePrefix}_language`;
 export const metaSchemaLanguageStatusFileName = (language) => `${metaSchemaLanguageFilePrefix}_${language}.yaml`;
 export const metaSchemaLanguageStatusPath = (language) => schemaSourceDirPath + metaSchemaLanguageStatusFileName(language);
 
-export const isExperimentalProperty = (property) => property.endsWith('/development');
 export const isExperimentalType = (type) => type.startsWith('Experimental');
 
-export const snippetsDirPath = __dirname + "/../snippets/";
+export const snippetsDirPath = __dirname + "/../../snippets/";
 export const rootTypeName = 'OpenTelemetryConfiguration';

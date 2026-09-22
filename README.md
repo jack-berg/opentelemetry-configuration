@@ -15,6 +15,7 @@ JSON schema was chosen in part because of the large [ecosystem of tools](https:/
 * [/examples](examples): sample configuration files (see [starter templates](#starter-templates) for more details)
 * [/snippets](snippets): small targeted configuration files illustrating specific scenarios (see [snippets](CONTRIBUTING.md#snippets) for more details)
 * [/validator](validator): a tool which performs env var substitution on YAML, validates YAML against the schema, and outputs to JSON or YAML
+* [/scripts](scripts): schema build/validation tooling (see [scripts/README.md](scripts/README.md))
 
 ## Starter templates
 
