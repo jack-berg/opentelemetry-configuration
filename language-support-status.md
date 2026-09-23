@@ -85,7 +85,6 @@ Latest supported file format: `1.0.0`
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
 | `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
-| `ExperimentalCodeInstrumentation` | not_applicable |  | * `semconv`: not_applicable<br> |
 | `ExperimentalComposableAlwaysOffSampler` | supported |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | supported |  |  |
 | `ExperimentalComposableParentThresholdSampler` | supported |  | * `root`: supported<br> |
@@ -96,21 +95,14 @@ Latest supported file format: `1.0.0`
 | `ExperimentalComposableRuleBasedSamplerRuleAttributeValues` | supported |  | * `key`: supported<br>* `values`: supported<br> |
 | `ExperimentalComposableSampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_threshold`: supported<br>* `probability`: supported<br>* `rule_based`: supported<br> |
 | `ExperimentalContainerResourceDetector` | supported |  |  |
-| `ExperimentalDbInstrumentation` | not_applicable |  | * `semconv`: not_applicable<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
-| `ExperimentalGenAiInstrumentation` | not_applicable |  | * `semconv`: not_applicable<br> |
-| `ExperimentalGeneralInstrumentation` | not_applicable |  | * `code`: not_applicable<br>* `db`: not_applicable<br>* `gen_ai`: not_applicable<br>* `http`: not_applicable<br>* `messaging`: not_applicable<br>* `rpc`: not_applicable<br>* `sanitization`: not_applicable<br>* `stability_opt_in_list`: not_applicable<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
-| `ExperimentalHttpClientInstrumentation` | not_applicable |  | * `known_methods`: not_applicable<br>* `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
-| `ExperimentalHttpInstrumentation` | not_applicable |  | * `client`: not_applicable<br>* `semconv`: not_applicable<br>* `server`: not_applicable<br> |
-| `ExperimentalHttpServerInstrumentation` | not_applicable |  | * `known_methods`: not_applicable<br>* `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
 | `ExperimentalInstrumentation` | not_applicable |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: not_applicable<br>* `go`: not_applicable<br>* `java`: not_applicable<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | `ExperimentalJaegerRemoteSampler` | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
 | `ExperimentalLanguageSpecificInstrumentation` | not_applicable |  |  |
 | `ExperimentalLoggerConfig` | supported |  | * `enabled`: supported<br>* `minimum_severity`: supported<br>* `trace_based`: supported<br> |
 | `ExperimentalLoggerConfigurator` | supported |  | * `default_config`: supported<br>* `loggers`: supported<br> |
 | `ExperimentalLoggerMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| `ExperimentalMessagingInstrumentation` | not_applicable |  | * `semconv`: not_applicable<br> |
 | `ExperimentalMeterConfig` | supported |  | * `enabled`: supported<br> |
 | `ExperimentalMeterConfigurator` | supported |  | * `default_config`: supported<br>* `meters`: supported<br> |
 | `ExperimentalMeterMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
@@ -122,15 +114,11 @@ Latest supported file format: `1.0.0`
 | `ExperimentalPrometheusTranslationStrategy` | supported |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: supported<br>* `underscore_escaping_without_suffixes/development`: supported<br> |
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
-| `ExperimentalRpcInstrumentation` | not_applicable |  | * `semconv`: not_applicable<br> |
-| `ExperimentalSanitization` | not_applicable |  | * `url`: not_applicable<br> |
-| `ExperimentalSemconvConfig` | not_applicable |  | * `dual_emit`: not_applicable<br>* `experimental`: not_applicable<br>* `version`: not_applicable<br> |
 | `ExperimentalServiceResourceDetector` | supported |  |  |
 | `ExperimentalSpanParent` | supported |  | * `local`: supported<br>* `none`: supported<br>* `remote`: supported<br> |
 | `ExperimentalTracerConfig` | supported |  | * `enabled`: supported<br> |
 | `ExperimentalTracerConfigurator` | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | `ExperimentalTracerMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| `ExperimentalUrlSanitization` | not_applicable |  | * `sensitive_query_parameters`: not_applicable<br> |
 | `ExperimentalViewMatchingMode` | not_implemented |  | * `composable`: not_implemented<br>* `independent`: not_implemented<br> |
 
 
@@ -208,7 +196,6 @@ Latest supported file format: `1.0.0`
 | `View` | unknown |  | * `selector`: unknown<br>* `stream`: unknown<br> |
 | `ViewSelector` | unknown |  | * `instrument_name`: unknown<br>* `instrument_type`: unknown<br>* `meter_name`: unknown<br>* `meter_schema_url`: unknown<br>* `meter_version`: unknown<br>* `unit`: unknown<br> |
 | `ViewStream` | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br> |
-| `ExperimentalCodeInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalComposableAlwaysOffSampler` | not_implemented |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | not_implemented |  |  |
 | `ExperimentalComposableParentThresholdSampler` | not_implemented |  | * `root`: not_implemented<br> |
@@ -219,21 +206,14 @@ Latest supported file format: `1.0.0`
 | `ExperimentalComposableRuleBasedSamplerRuleAttributeValues` | not_implemented |  | * `key`: not_implemented<br>* `values`: not_implemented<br> |
 | `ExperimentalComposableSampler` | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | `ExperimentalContainerResourceDetector` | supported |  |  |
-| `ExperimentalDbInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
-| `ExperimentalGenAiInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
-| `ExperimentalGeneralInstrumentation` | not_implemented |  | * `code`: not_implemented<br>* `db`: not_implemented<br>* `gen_ai`: not_implemented<br>* `http`: not_implemented<br>* `messaging`: not_implemented<br>* `rpc`: not_implemented<br>* `sanitization`: not_implemented<br>* `stability_opt_in_list`: not_implemented<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
-| `ExperimentalHttpClientInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br>* `request_captured_headers`: not_implemented<br>* `response_captured_headers`: not_implemented<br> |
-| `ExperimentalHttpInstrumentation` | not_implemented |  | * `client`: not_implemented<br>* `semconv`: not_implemented<br>* `server`: not_implemented<br> |
-| `ExperimentalHttpServerInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br>* `request_captured_headers`: not_implemented<br>* `response_captured_headers`: not_implemented<br> |
 | `ExperimentalInstrumentation` | not_implemented |  | * `cpp`: not_implemented<br>* `dotnet`: not_implemented<br>* `erlang`: not_implemented<br>* `general`: not_implemented<br>* `go`: not_implemented<br>* `java`: not_implemented<br>* `js`: not_implemented<br>* `php`: not_implemented<br>* `python`: not_implemented<br>* `ruby`: not_implemented<br>* `rust`: not_implemented<br>* `swift`: not_implemented<br> |
 | `ExperimentalJaegerRemoteSampler` | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
 | `ExperimentalLanguageSpecificInstrumentation` | not_implemented |  |  |
 | `ExperimentalLoggerConfig` | unknown |  | * `enabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
 | `ExperimentalLoggerConfigurator` | not_implemented |  | * `default_config`: not_implemented<br>* `loggers`: not_implemented<br> |
 | `ExperimentalLoggerMatcherAndConfig` | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| `ExperimentalMessagingInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalMeterConfig` | unknown |  | * `enabled`: unknown<br> |
 | `ExperimentalMeterConfigurator` | not_implemented |  | * `default_config`: not_implemented<br>* `meters`: not_implemented<br> |
 | `ExperimentalMeterMatcherAndConfig` | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
@@ -245,15 +225,11 @@ Latest supported file format: `1.0.0`
 | `ExperimentalPrometheusTranslationStrategy` | supported |  | * `no_translation/development`: supported<br>* `no_utf8_escaping_with_suffixes/development`: supported<br>* `underscore_escaping_with_suffixes`: supported<br>* `underscore_escaping_without_suffixes/development`: supported<br> |
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
-| `ExperimentalRpcInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
-| `ExperimentalSanitization` | unknown |  | * `url`: unknown<br> |
-| `ExperimentalSemconvConfig` | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | `ExperimentalServiceResourceDetector` | supported |  |  |
 | `ExperimentalSpanParent` | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | `ExperimentalTracerConfig` | unknown |  | * `enabled`: unknown<br> |
 | `ExperimentalTracerConfigurator` | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | `ExperimentalTracerMatcherAndConfig` | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| `ExperimentalUrlSanitization` | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 | `ExperimentalViewMatchingMode` | not_implemented |  | * `composable`: not_implemented<br>* `independent`: not_implemented<br> |
 
 
@@ -331,7 +307,6 @@ Latest supported file format: `1.0.0-rc.3`
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
 | `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
-| `ExperimentalCodeInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalComposableAlwaysOffSampler` | supported |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | supported |  |  |
 | `ExperimentalComposableParentThresholdSampler` | supported |  | * `root`: supported<br> |
@@ -342,21 +317,14 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalComposableRuleBasedSamplerRuleAttributeValues` | supported |  | * `key`: supported<br>* `values`: supported<br> |
 | `ExperimentalComposableSampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_threshold`: supported<br>* `probability`: supported<br>* `rule_based`: supported<br> |
 | `ExperimentalContainerResourceDetector` | supported |  |  |
-| `ExperimentalDbInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | supported |  |  |
-| `ExperimentalGenAiInstrumentation` | unknown |  | * `semconv`: unknown<br> |
-| `ExperimentalGeneralInstrumentation` | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
-| `ExperimentalHttpClientInstrumentation` | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
-| `ExperimentalHttpInstrumentation` | supported |  | * `client`: supported<br>* `semconv`: supported<br>* `server`: supported<br> |
-| `ExperimentalHttpServerInstrumentation` | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
 | `ExperimentalInstrumentation` | supported |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: supported<br>* `go`: not_applicable<br>* `java`: supported<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | `ExperimentalJaegerRemoteSampler` | supported |  | * `endpoint`: supported<br>* `initial_sampler`: supported<br>* `interval`: supported<br> |
 | `ExperimentalLanguageSpecificInstrumentation` | supported |  |  |
 | `ExperimentalLoggerConfig` | supported |  | * `enabled`: supported<br>* `minimum_severity`: supported<br>* `trace_based`: supported<br> |
 | `ExperimentalLoggerConfigurator` | supported |  | * `default_config`: supported<br>* `loggers`: supported<br> |
 | `ExperimentalLoggerMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| `ExperimentalMessagingInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalMeterConfig` | supported |  | * `enabled`: supported<br> |
 | `ExperimentalMeterConfigurator` | supported |  | * `default_config`: supported<br>* `meters`: supported<br> |
 | `ExperimentalMeterMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
@@ -368,15 +336,11 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalPrometheusTranslationStrategy` | not_implemented |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_without_suffixes/development`: not_implemented<br> |
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
-| `ExperimentalRpcInstrumentation` | unknown |  | * `semconv`: unknown<br> |
-| `ExperimentalSanitization` | unknown |  | * `url`: unknown<br> |
-| `ExperimentalSemconvConfig` | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | `ExperimentalServiceResourceDetector` | supported |  |  |
 | `ExperimentalSpanParent` | supported |  | * `local`: supported<br>* `none`: supported<br>* `remote`: supported<br> |
 | `ExperimentalTracerConfig` | supported |  | * `enabled`: supported<br> |
 | `ExperimentalTracerConfigurator` | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | `ExperimentalTracerMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| `ExperimentalUrlSanitization` | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 | `ExperimentalViewMatchingMode` | not_implemented |  | * `composable`: not_implemented<br>* `independent`: not_implemented<br> |
 
 
@@ -454,7 +418,6 @@ Latest supported file format: `1.0.0-rc.3`
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
 | `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
-| `ExperimentalCodeInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalComposableAlwaysOffSampler` | not_implemented |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | not_implemented |  |  |
 | `ExperimentalComposableParentThresholdSampler` | not_implemented |  | * `root`: not_implemented<br> |
@@ -465,21 +428,14 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalComposableRuleBasedSamplerRuleAttributeValues` | not_implemented |  | * `key`: not_implemented<br>* `values`: not_implemented<br> |
 | `ExperimentalComposableSampler` | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | `ExperimentalContainerResourceDetector` | not_implemented |  |  |
-| `ExperimentalDbInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
-| `ExperimentalGenAiInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
-| `ExperimentalGeneralInstrumentation` | not_implemented |  | * `code`: not_implemented<br>* `db`: not_implemented<br>* `gen_ai`: not_implemented<br>* `http`: not_implemented<br>* `messaging`: not_implemented<br>* `rpc`: not_implemented<br>* `sanitization`: not_implemented<br>* `stability_opt_in_list`: not_implemented<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
-| `ExperimentalHttpClientInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br>* `request_captured_headers`: not_implemented<br>* `response_captured_headers`: not_implemented<br> |
-| `ExperimentalHttpInstrumentation` | not_implemented |  | * `client`: not_implemented<br>* `semconv`: not_implemented<br>* `server`: not_implemented<br> |
-| `ExperimentalHttpServerInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br>* `request_captured_headers`: not_implemented<br>* `response_captured_headers`: not_implemented<br> |
 | `ExperimentalInstrumentation` | not_implemented |  | * `cpp`: not_implemented<br>* `dotnet`: not_implemented<br>* `erlang`: not_implemented<br>* `general`: not_implemented<br>* `go`: not_implemented<br>* `java`: not_implemented<br>* `js`: not_implemented<br>* `php`: not_implemented<br>* `python`: not_implemented<br>* `ruby`: not_implemented<br>* `rust`: not_implemented<br>* `swift`: not_implemented<br> |
 | `ExperimentalJaegerRemoteSampler` | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
 | `ExperimentalLanguageSpecificInstrumentation` | not_implemented |  |  |
 | `ExperimentalLoggerConfig` | not_implemented |  | * `enabled`: not_implemented<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
 | `ExperimentalLoggerConfigurator` | not_implemented |  | * `default_config`: not_implemented<br>* `loggers`: not_implemented<br> |
 | `ExperimentalLoggerMatcherAndConfig` | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
-| `ExperimentalMessagingInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalMeterConfig` | not_implemented |  | * `enabled`: not_implemented<br> |
 | `ExperimentalMeterConfigurator` | not_implemented |  | * `default_config`: not_implemented<br>* `meters`: not_implemented<br> |
 | `ExperimentalMeterMatcherAndConfig` | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
@@ -491,15 +447,11 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalPrometheusTranslationStrategy` | not_implemented |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_without_suffixes/development`: not_implemented<br> |
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
-| `ExperimentalRpcInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
-| `ExperimentalSanitization` | not_implemented |  | * `url`: not_implemented<br> |
-| `ExperimentalSemconvConfig` | not_implemented |  | * `dual_emit`: not_implemented<br>* `experimental`: not_implemented<br>* `version`: not_implemented<br> |
 | `ExperimentalServiceResourceDetector` | supported |  |  |
 | `ExperimentalSpanParent` | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
 | `ExperimentalTracerConfig` | not_implemented |  | * `enabled`: not_implemented<br> |
 | `ExperimentalTracerConfigurator` | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | `ExperimentalTracerMatcherAndConfig` | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
-| `ExperimentalUrlSanitization` | not_implemented |  | * `sensitive_query_parameters`: not_implemented<br> |
 | `ExperimentalViewMatchingMode` | not_implemented |  | * `composable`: not_implemented<br>* `independent`: not_implemented<br> |
 
 
@@ -577,7 +529,6 @@ Latest supported file format: `1.0.0-rc.2`
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: not_implemented<br> |
 | `ViewStream` | supported | `attribute_keys.excluded` is not implemented, only `attribute_keys.included` is supported. | * `aggregation`: ignored<br>* `aggregation_cardinality_limit`: not_implemented<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
-| `ExperimentalCodeInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalComposableAlwaysOffSampler` | not_implemented |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | not_implemented |  |  |
 | `ExperimentalComposableParentThresholdSampler` | not_implemented |  | * `root`: not_implemented<br> |
@@ -588,21 +539,14 @@ Latest supported file format: `1.0.0-rc.2`
 | `ExperimentalComposableRuleBasedSamplerRuleAttributeValues` | not_implemented |  | * `key`: not_implemented<br>* `values`: not_implemented<br> |
 | `ExperimentalComposableSampler` | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | `ExperimentalContainerResourceDetector` | ignored |  |  |
-| `ExperimentalDbInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
-| `ExperimentalGenAiInstrumentation` | unknown |  | * `semconv`: unknown<br> |
-| `ExperimentalGeneralInstrumentation` | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
-| `ExperimentalHttpClientInstrumentation` | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
-| `ExperimentalHttpInstrumentation` | supported |  | * `client`: supported<br>* `semconv`: supported<br>* `server`: supported<br> |
-| `ExperimentalHttpServerInstrumentation` | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
 | `ExperimentalInstrumentation` | supported |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: supported<br>* `go`: not_applicable<br>* `java`: not_applicable<br>* `js`: not_applicable<br>* `php`: supported<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | `ExperimentalJaegerRemoteSampler` | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
 | `ExperimentalLanguageSpecificInstrumentation` | supported |  |  |
 | `ExperimentalLoggerConfig` | supported |  | * `enabled`: supported<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
 | `ExperimentalLoggerConfigurator` | supported |  | * `default_config`: supported<br>* `loggers`: supported<br> |
 | `ExperimentalLoggerMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| `ExperimentalMessagingInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalMeterConfig` | supported |  | * `enabled`: supported<br> |
 | `ExperimentalMeterConfigurator` | supported |  | * `default_config`: supported<br>* `meters`: supported<br> |
 | `ExperimentalMeterMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
@@ -614,15 +558,11 @@ Latest supported file format: `1.0.0-rc.2`
 | `ExperimentalPrometheusTranslationStrategy` | not_implemented |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_without_suffixes/development`: not_implemented<br> |
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: ignored<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
-| `ExperimentalRpcInstrumentation` | unknown |  | * `semconv`: unknown<br> |
-| `ExperimentalSanitization` | unknown |  | * `url`: unknown<br> |
-| `ExperimentalSemconvConfig` | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | `ExperimentalServiceResourceDetector` | supported |  |  |
 | `ExperimentalSpanParent` | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
 | `ExperimentalTracerConfig` | supported |  | * `enabled`: supported<br> |
 | `ExperimentalTracerConfigurator` | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | `ExperimentalTracerMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| `ExperimentalUrlSanitization` | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 | `ExperimentalViewMatchingMode` | not_implemented |  | * `composable`: not_implemented<br>* `independent`: not_implemented<br> |
 
 
@@ -700,7 +640,6 @@ Latest supported file format: `1.0.0`
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
 | `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
-| `ExperimentalCodeInstrumentation` | ignored |  | * `semconv`: ignored<br> |
 | `ExperimentalComposableAlwaysOffSampler` | supported |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | supported |  |  |
 | `ExperimentalComposableParentThresholdSampler` | supported |  | * `root`: supported<br> |
@@ -711,21 +650,14 @@ Latest supported file format: `1.0.0`
 | `ExperimentalComposableRuleBasedSamplerRuleAttributeValues` | supported |  | * `key`: supported<br>* `values`: supported<br> |
 | `ExperimentalComposableSampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_threshold`: supported<br>* `probability`: supported<br>* `rule_based`: supported<br> |
 | `ExperimentalContainerResourceDetector` | ignored |  |  |
-| `ExperimentalDbInstrumentation` | ignored |  | * `semconv`: ignored<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | ignored |  |  |
-| `ExperimentalGenAiInstrumentation` | ignored |  | * `semconv`: ignored<br> |
-| `ExperimentalGeneralInstrumentation` | ignored |  | * `code`: ignored<br>* `db`: ignored<br>* `gen_ai`: ignored<br>* `http`: ignored<br>* `messaging`: ignored<br>* `rpc`: ignored<br>* `sanitization`: ignored<br>* `stability_opt_in_list`: ignored<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
-| `ExperimentalHttpClientInstrumentation` | ignored |  | * `known_methods`: ignored<br>* `request_captured_headers`: ignored<br>* `response_captured_headers`: ignored<br> |
-| `ExperimentalHttpInstrumentation` | ignored |  | * `client`: ignored<br>* `semconv`: ignored<br>* `server`: ignored<br> |
-| `ExperimentalHttpServerInstrumentation` | ignored |  | * `known_methods`: ignored<br>* `request_captured_headers`: ignored<br>* `response_captured_headers`: ignored<br> |
 | `ExperimentalInstrumentation` | ignored |  | * `cpp`: ignored<br>* `dotnet`: ignored<br>* `erlang`: ignored<br>* `general`: ignored<br>* `go`: ignored<br>* `java`: ignored<br>* `js`: ignored<br>* `php`: ignored<br>* `python`: ignored<br>* `ruby`: ignored<br>* `rust`: ignored<br>* `swift`: ignored<br> |
 | `ExperimentalJaegerRemoteSampler` | ignored |  | * `endpoint`: ignored<br>* `initial_sampler`: ignored<br>* `interval`: ignored<br> |
 | `ExperimentalLanguageSpecificInstrumentation` | ignored |  |  |
 | `ExperimentalLoggerConfig` | ignored |  | * `enabled`: ignored<br>* `minimum_severity`: ignored<br>* `trace_based`: ignored<br> |
 | `ExperimentalLoggerConfigurator` | ignored |  | * `default_config`: ignored<br>* `loggers`: ignored<br> |
 | `ExperimentalLoggerMatcherAndConfig` | ignored |  | * `config`: ignored<br>* `name`: ignored<br> |
-| `ExperimentalMessagingInstrumentation` | ignored |  | * `semconv`: ignored<br> |
 | `ExperimentalMeterConfig` | ignored |  | * `enabled`: ignored<br> |
 | `ExperimentalMeterConfigurator` | ignored |  | * `default_config`: ignored<br>* `meters`: ignored<br> |
 | `ExperimentalMeterMatcherAndConfig` | ignored |  | * `config`: ignored<br>* `name`: ignored<br> |
@@ -737,15 +669,11 @@ Latest supported file format: `1.0.0`
 | `ExperimentalPrometheusTranslationStrategy` | ignored |  | * `no_translation/development`: ignored<br>* `no_utf8_escaping_with_suffixes/development`: ignored<br>* `underscore_escaping_with_suffixes`: ignored<br>* `underscore_escaping_without_suffixes/development`: ignored<br> |
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
-| `ExperimentalRpcInstrumentation` | ignored |  | * `semconv`: ignored<br> |
-| `ExperimentalSanitization` | ignored |  | * `url`: ignored<br> |
-| `ExperimentalSemconvConfig` | ignored |  | * `dual_emit`: ignored<br>* `experimental`: ignored<br>* `version`: ignored<br> |
 | `ExperimentalServiceResourceDetector` | supported |  |  |
 | `ExperimentalSpanParent` | supported |  | * `local`: supported<br>* `none`: supported<br>* `remote`: supported<br> |
 | `ExperimentalTracerConfig` | ignored |  | * `enabled`: ignored<br> |
 | `ExperimentalTracerConfigurator` | ignored |  | * `default_config`: ignored<br>* `tracers`: ignored<br> |
 | `ExperimentalTracerMatcherAndConfig` | ignored |  | * `config`: ignored<br>* `name`: ignored<br> |
-| `ExperimentalUrlSanitization` | ignored |  | * `sensitive_query_parameters`: ignored<br> |
 | `ExperimentalViewMatchingMode` | not_implemented |  | * `composable`: not_implemented<br>* `independent`: not_implemented<br> |
 
 

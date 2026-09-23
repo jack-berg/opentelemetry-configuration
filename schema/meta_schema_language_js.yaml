@@ -236,9 +236,6 @@ typeSupportStatuses:
   - type: ViewStream
     status: supported
     propertyOverrides: []
-  - type: ExperimentalCodeInstrumentation
-    status: not_implemented
-    propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
     status: not_implemented
     propertyOverrides: []
@@ -269,29 +266,11 @@ typeSupportStatuses:
   - type: ExperimentalContainerResourceDetector
     status: not_implemented
     propertyOverrides: []
-  - type: ExperimentalDbInstrumentation
-    status: not_implemented
-    propertyOverrides: []
   - type: ExperimentalEventToSpanEventBridgeLogRecordProcessor
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalGenAiInstrumentation
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalGeneralInstrumentation
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalHostResourceDetector
     status: supported
-    propertyOverrides: []
-  - type: ExperimentalHttpClientInstrumentation
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalHttpInstrumentation
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalHttpServerInstrumentation
-    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalInstrumentation
     status: not_implemented
@@ -309,9 +288,6 @@ typeSupportStatuses:
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalLoggerMatcherAndConfig
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalMessagingInstrumentation
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalMeterConfig
@@ -347,15 +323,6 @@ typeSupportStatuses:
   - type: ExperimentalResourceDetector
     status: supported
     propertyOverrides: []
-  - type: ExperimentalRpcInstrumentation
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalSanitization
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalSemconvConfig
-    status: not_implemented
-    propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
     status: supported
     propertyOverrides: []
@@ -369,9 +336,6 @@ typeSupportStatuses:
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalUrlSanitization
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalViewMatchingMode

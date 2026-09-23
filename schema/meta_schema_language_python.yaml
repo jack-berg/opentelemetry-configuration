@@ -226,9 +226,6 @@ typeSupportStatuses:
   - type: ViewStream
     status: supported
     propertyOverrides: []
-  - type: ExperimentalCodeInstrumentation
-    status: ignored
-    propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
     status: supported
     propertyOverrides: []
@@ -259,29 +256,11 @@ typeSupportStatuses:
   - type: ExperimentalContainerResourceDetector
     status: ignored
     propertyOverrides: []
-  - type: ExperimentalDbInstrumentation
-    status: ignored
-    propertyOverrides: []
   - type: ExperimentalEventToSpanEventBridgeLogRecordProcessor
-    status: ignored
-    propertyOverrides: []
-  - type: ExperimentalGenAiInstrumentation
-    status: ignored
-    propertyOverrides: []
-  - type: ExperimentalGeneralInstrumentation
     status: ignored
     propertyOverrides: []
   - type: ExperimentalHostResourceDetector
     status: supported
-    propertyOverrides: []
-  - type: ExperimentalHttpClientInstrumentation
-    status: ignored
-    propertyOverrides: []
-  - type: ExperimentalHttpInstrumentation
-    status: ignored
-    propertyOverrides: []
-  - type: ExperimentalHttpServerInstrumentation
-    status: ignored
     propertyOverrides: []
   - type: ExperimentalInstrumentation
     status: ignored
@@ -299,9 +278,6 @@ typeSupportStatuses:
     status: ignored
     propertyOverrides: []
   - type: ExperimentalLoggerMatcherAndConfig
-    status: ignored
-    propertyOverrides: []
-  - type: ExperimentalMessagingInstrumentation
     status: ignored
     propertyOverrides: []
   - type: ExperimentalMeterConfig
@@ -337,15 +313,6 @@ typeSupportStatuses:
   - type: ExperimentalResourceDetector
     status: supported
     propertyOverrides: []
-  - type: ExperimentalRpcInstrumentation
-    status: ignored
-    propertyOverrides: []
-  - type: ExperimentalSanitization
-    status: ignored
-    propertyOverrides: []
-  - type: ExperimentalSemconvConfig
-    status: ignored
-    propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
     status: supported
     propertyOverrides: []
@@ -359,9 +326,6 @@ typeSupportStatuses:
     status: ignored
     propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
-    status: ignored
-    propertyOverrides: []
-  - type: ExperimentalUrlSanitization
     status: ignored
     propertyOverrides: []
   - type: ExperimentalViewMatchingMode

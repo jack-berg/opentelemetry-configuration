@@ -8,6 +8,12 @@ const identifier = /^[A-Za-z_][A-Za-z0-9_]*$/;
 const maturitySuffix = /\/development$/;
 const pascalCaseTypeName = /^[A-Z][A-Za-z0-9]*$/;
 
+// `<TypeName>.<propertyName>` paths exempt from noSubschemas. For opaque object properties
+// whose shape is owned elsewhere (e.g. federated to another project).
+const noSubschemasExcludes = new Set([
+    "ExperimentalInstrumentation.general", // owned by semantic-conventions
+]);
+
 // Read source schema
 const sourceTypes = Object.values(readSourceTypesByType());
 
@@ -199,6 +205,9 @@ function noSubschemas(sourceSchemaType, messages) {
         return;
     }
     sourceSchemaType.properties.forEach(property => {
+        if (noSubschemasExcludes.has(`${sourceSchemaType.type}.${property.property}`)) {
+            return;
+        }
         property.types.forEach(type => {
             if (type === 'object') {
                 messages.push(`Please move subschema for ${sourceSchemaType.type}.${property.property} to top level type in $defs.`)
